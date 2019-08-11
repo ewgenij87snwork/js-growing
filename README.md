@@ -1,4 +1,4 @@
-# js
+# This is my growing in JavaScript. My study. Thanks for all who helps me in this hard and long way
 
 > Nuxt.js project
 
@@ -18,6 +18,4 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
