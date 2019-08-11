@@ -76,11 +76,11 @@ export default {
 		},
 		task100: function() {
 			var array = [2, 5, 9];
-			console.log(array.indexOf(2));     // 0
-			console.log(array.indexOf(7));     // -1
-			console.log(array.indexOf(9, 2));  // 2
-			console.log(array.indexOf(2, -1)); // -1 ...схуяли тут -1, а ниже 0.. --"Если индекс является отрицательным числом, он трактуется как смещение с конца массива. Обратите внимание: если индекс отрицателен, массив всё равно просматривается от начала к концу."
-			console.log(array.indexOf(2, -3)); // 0
+			console.log(array.indexOf(2));    
+			console.log(array.indexOf(7));     
+			console.log(array.indexOf(9, 2)); 
+			console.log(array.indexOf(2, -1)); 
+			console.log(array.indexOf(2, -3)); 
 		},
 		taskMatch: function() {
 			var str = 'Глава 3.4.5.1 содержит дополнительную информацию';

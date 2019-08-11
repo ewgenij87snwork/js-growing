@@ -15,9 +15,6 @@ export default {
 	name: 'cheatsheet',
 
 	methods: {
-		// insertBeforeZ: function() {
-		// 	console.log(60*60)
-		// },
 		insertBeforeZ: function() {
 			console.log(60*60)
 		},
