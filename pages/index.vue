@@ -8,11 +8,7 @@
 </template>
 
 <script>
-// export default {
-//   components: {
-//     AppLogo
-//   }
-// }
+
 </script>
 
 <style>
