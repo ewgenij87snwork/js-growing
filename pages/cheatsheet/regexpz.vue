@@ -4,7 +4,7 @@
 		<div class="task">
 			<button v-on:click="testRegExp">testRegExp</button>
 		</div>
-		<div class="allText" id="unFormatText" style="{'display:inline;'}">
+		<div class="allText" id="unFormatText">
 			+550
 			Поколения работают на работах, которые ненавидят, чтобы покупать вещи, которые им не нужны
 
@@ -117,17 +117,10 @@
 	</div>
 </template>
 <script>
-// ЗАДАЧА: по клику запустить скрипт testRegExp, который будет:
-// 	- брать содержимое блока с id="unFormatText"
-// 	- убирать "+555"
-// 	- открывать и закрывать <p> с классом textParagraph
-// 	- измененный и отформатированный текст передать переменной alreadyFormated. Присваиваю эту переменную блоку c id="FormatedText".
-// 	- заменять блок id="unFormatText" на id="FormatedText".
 	export default	{
 		name: 'regexpz',
 		methods: {
 			testRegExp: function() {
-				document.getElementById("unFormatText").style.display = "block"
 				var unFormatText = document.getElementById("unFormatText");
 				var inRegExp = /\+[0-9]+/g;
 				var outRegExp = '</p><p class="textParagraph">';
@@ -135,8 +128,6 @@
 				var alreadyFormated = buffer;
 				document.getElementById("unFormatText").innerHTML = alreadyFormated;
 				console.log(alreadyFormated);
-				var tagBuffer = document.getElementsByTagName("p");
-				// tagBuffer.style.background = "red";
 			},
 		}
 
