@@ -5,7 +5,7 @@
 			<button v-on:click="testRegExp">testRegExp</button>
 		</div>
 		<div class="allText" id="unFormatText">
-			
+
 			+550
 			Поколения работают на работах, которые ненавидят, чтобы покупать вещи, которые им не нужны
 
@@ -126,7 +126,10 @@
 				var inRegExp = /\+[0-9]+/g;
 				var outRegExp = '</p><p class="textParagraph">';
 				var buffer  = unFormatText.textContent.replace(inRegExp, outRegExp);
-				var alreadyFormated = buffer;
+				var alreadyFormated = (buffer + '</p>');
+				var firstInsert = /[<]+[/][p][>]/;
+				// как побороть этот пиздец с регулярным выражением
+				alreadyFormated = alreadyFormated.replace(firstInsert, 'блядь!!!!!!!');
 				document.getElementById("unFormatText").innerHTML = alreadyFormated;
 				console.log(alreadyFormated);
 			},
@@ -135,8 +138,11 @@
 	}
 </script>
 <style scoped>
+	.container {
+		display: block;
+	}
 	.textParagraph {
-		margin-bottom: 5px;
+		margin-bottom: 50px;
 		border-bottom: 1px solid teal;
 		background: rgba(0,0,0,.2);
 		text-indent: 30px
