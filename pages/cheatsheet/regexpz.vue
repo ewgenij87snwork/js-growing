@@ -128,7 +128,8 @@
 				var buffer  = unFormatText.textContent.replace(inRegExp, outRegExp);
 				var alreadyFormated = (buffer + '</p>');
 				var firstInsert = /[<]+[/][p][>]/;
-				// как побороть этот пиздец с регулярным выражением
+				/* как побороть этот пиздец с регулярным выражением
+				*/
 				alreadyFormated = alreadyFormated.replace(firstInsert, 'блядь!!!!!!!');
 				document.getElementById("unFormatText").innerHTML = alreadyFormated;
 				console.log(alreadyFormated);
