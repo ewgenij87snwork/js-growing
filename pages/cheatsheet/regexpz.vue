@@ -4,8 +4,7 @@
 		<div class="task">
 			<button v-on:click="testRegExp">testRegExp</button>
 		</div>
-		<div class="allText" id="unFormatText">
-
+		<div class="allText" id="unFormatText"> 
 			+550
 			Поколения работают на работах, которые ненавидят, чтобы покупать вещи, которые им не нужны
 
