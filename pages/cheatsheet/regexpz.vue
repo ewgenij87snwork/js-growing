@@ -5,7 +5,7 @@
 			<button v-on:click="testRegExp">testRegExp</button>
 		</div>
 		<div class="allText" id="unFormatText">
-			<code>+550
+						+550
 						Поколения работают на работах, которые ненавидят, чтобы покупать вещи, которые им не нужны
 			
 						+620
@@ -112,7 +112,7 @@
 						*Если знаешь, где искать, то найдешь скелет в любом шкафу.*
 			
 						+42
-						Презерватив - хрустальная туфелька нашего века. Одеваешь его при встречи с прекрасным принцем, танцуешь всю ночь, а потом выбрасываешь. Презерватив, не принца.</code>
+						Презерватив - хрустальная туфелька нашего века. Одеваешь его при встречи с прекрасным принцем, танцуешь всю ночь, а потом выбрасываешь. Презерватив, не принца.
 		</div>
 	</div>
 </template>
@@ -127,7 +127,7 @@
 				var buffer  = unFormatText.textContent.replace(inRegExp, outRegExp);
 				var alreadyFormated = (buffer + '</p>');
 				var firstInsert = /<\/p>/;
-				alreadyFormated = alreadyFormated.replace(firstInsert, '');
+				alreadyFormated = alreadyFormated.normalize();
 				document.getElementById("unFormatText").innerHTML = alreadyFormated;
 				console.log(alreadyFormated);
 			},
