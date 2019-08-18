@@ -127,10 +127,8 @@
 				var outRegExp = '</p><p class="textParagraph">';
 				var buffer  = unFormatText.textContent.replace(inRegExp, outRegExp);
 				var alreadyFormated = (buffer + '</p>');
-				var firstInsert = /[<]+[/][p][>]/;
-				/* как побороть этот пиздец с регулярным выражением
-				*/
-				alreadyFormated = alreadyFormated.replace(firstInsert, 'блядь!!!!!!!');
+				var firstInsert = /<\/p>/;
+				alreadyFormated = alreadyFormated.replace(firstInsert, '');
 				document.getElementById("unFormatText").innerHTML = alreadyFormated;
 				console.log(alreadyFormated);
 			},
@@ -138,15 +136,20 @@
 
 	}
 </script>
-<style scoped>
+<style>
 	.container {
 		display: block;
 	}
 	.textParagraph {
-		margin-bottom: 50px;
-		border-bottom: 1px solid teal;
+		margin: 30px;
+		border-bottom: 3px solid teal;
 		background: rgba(0,0,0,.2);
-		text-indent: 30px
+		text-indent: 30px;
+		font-weight: bold;
+		padding: 15px;
+	}
+	.my-class {
+		margin-bottom: 30px;
 	}
 	.blad {
 		background: teal;
