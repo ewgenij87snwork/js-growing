@@ -81,8 +81,6 @@
 			concatZ: function() {
 				var stringTest;
 				stringTest = (this.stri0 + '<br>' + '.!.' + '<br>' + this.stri1);
-				// stringTest = this.stri0.concat('\n.!.\n ',this.stri1); 
-				// - TOO BAD FOR  PERFORMANCE (произовдительность)
 				document.getElementById("concatZ").innerHTML = stringTest;
 			},
 
