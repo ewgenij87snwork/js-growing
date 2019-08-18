@@ -127,7 +127,6 @@
 				var buffer  = unFormatText.textContent.replace(inRegExp, outRegExp);
 				var alreadyFormated = (buffer + '</p>');
 				var firstInsert = /<\/p>/;
-				alreadyFormated = alreadyFormated.normalize();
 				document.getElementById("unFormatText").innerHTML = alreadyFormated;
 				console.log(alreadyFormated);
 			},
