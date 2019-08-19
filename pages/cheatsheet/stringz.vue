@@ -55,6 +55,50 @@
 	}</code></pre>
 		</div>
 
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="indexOf">indexOf</button>
+				<p class="answer" id="indexOf">Press button to see result</p>
+			</div>
+			<pre><code><b>indexOf:</b> function() {
+		var stringTest = this.stri0;
+		document.getElementById("indexOf").innerHTML = stringTest.indexOf('desires');
+	}</code></pre>
+		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="lastIndexOf">lastIndexOf</button>
+				<p class="answer" id="lastIndexOf">Press button to see result</p>
+			</div>
+			<pre><code><b>lastIndexOf:</b> function() {
+		var stringTest = this.stri0;
+		document.getElementById("lastIndexOf").innerHTML = stringTest.lastIndexOf('desires');
+	}</code></pre>
+		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="match">match</button>
+				<p class="answer" id="match">Press button to see result</p>
+			</div>
+			<pre><code><b>match:</b> function() {
+		var stringTest = this.stri0;
+		document.getElementById("match").innerHTML = stringTest.match('desi');
+	}</code></pre>
+		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="replace">replace</button>
+				<p class="answer" id="replace">Press button to see result</p>
+			</div>
+			<pre><code><b>replace:</b> function() {
+		var stringTest = this.stri0;
+		document.getElementById("match").innerHTML = stringTest.match('desi');
+	}</code></pre>
+		</div>
+
 	</div>
 </template>
 <script>
@@ -87,6 +131,26 @@
 			fromCharCodeZ: function() {
 				document.getElementById("fromCharCodeZ").innerHTML = String.fromCharCode(87);
 			},
+
+			indexOf: function() {
+				var stringTest = this.stri0;
+				document.getElementById("indexOf").innerHTML = stringTest.indexOf('desires');
+			},
+
+			lastIndexOf: function() {
+				var stringTest = this.stri0;
+				document.getElementById("lastIndexOf").innerHTML = stringTest.lastIndexOf('desires');
+			},
+
+			match: function() {
+				var stringTest = this.stri0;
+				document.getElementById("match").innerHTML = stringTest.match('desi');
+			},
+
+			replace: function() {
+				var stringTest = this.stri0;
+				document.getElementById("replace").innerHTML = this.stri0 + '<br>' + '<br>' + stringTest.replace('a person really desires', 'I want');
+			},
 		}
 	}
 </script>
@@ -97,6 +161,8 @@
 		line-height: 1.4;
 		padding: 10px;
 		padding-top: 15px;
+		white-space: pre-wrap;
+		word-wrap: break-word;
 	}
 	button {
 		font-size: 1.5em;
