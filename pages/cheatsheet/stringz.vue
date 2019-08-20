@@ -95,8 +95,61 @@
 			</div>
 			<pre><code><b>replace:</b> function() {
 		var stringTest = this.stri0;
-		document.getElementById("match").innerHTML = stringTest.match('desi');
+		document.getElementById("match").innerHTML = stringTest.replace('a person really desires', 'I want');
 	}</code></pre>
+		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="search">search</button>
+				<p class="answer" id="search">Press button to see result</p>
+			</div>
+			<pre><code><b>search:</b> function() {
+		var stringTest = this.stri0;
+		document.getElementById("match").innerHTML = stringTest.search('a person really desires');
+	}</code></pre>
+		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="slice">slice</button>
+				<p class="answer" id="slice">Press button to see result</p>
+			</div>
+			<pre><code><b>slice:</b> function() {
+		var stringTest = this.stri0;
+		document.getElementById("slice").innerHTML = this.stri0 + stringTest.slice(-6, -1);
+	}</code></pre>
+		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="split">split</button>
+				<p class="answer" id="split">Press button to see result</p>
+			</div>
+			<pre><code><b>split:</b> function() {
+		var stringTest = this.stri0;
+		document.getElementById("split").innerHTML = this.stri0 +  stringTest.split(',').reverse().join('');
+	}</code></pre>
+		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="substring">substring</button>
+				<p class="answer" id="substring">Press button to see result</p>
+			</div>
+			<pre><code><b>substring:</b><b> function() {
+	var stringTest = this.stri0;
+	function replaceString(olds, newS, fulls) {
+		for (var i = 0; i &lt; fulls.length; ++i) { </b><i>-- цикл от начала до конца длины данной строки</i>
+		<b>if (fulls.substring(i, i + olds.length) == olds) { </b><i>--  если в строке fulls кусок от i до длины строки olds равен содержимому строки olds, то: </i>
+	<b>fulls = fulls.substring(0, i) + newS + fulls.substring(i + olds.length, fulls.length);</b>  <i>--  то строке fulls присвоить 3 последовательных значения: fulls(от самого начала до найденного совпадения olds) + вставляем newS + fulls(текущее значение i суммируем с длиной olds + до конца длины fulls </i>
+<b>	}
+}
+return fulls;
+}
+
+	document.getElementById("substring").innerHTML = this.stri0 + replaceString('When', 'Kiedy', stringTest);
+	}</b></code></pre>
 		</div>
 
 	</div>
@@ -151,45 +204,39 @@
 				var stringTest = this.stri0;
 				document.getElementById("replace").innerHTML = this.stri0 + '<br>' + '<br>' + stringTest.replace('a person really desires', 'I want');
 			},
+
+			search: function() {
+				var stringTest = this.stri0;
+				document.getElementById("search").innerHTML = this.stri0 + '<br>' + '<br>' + stringTest.search('a person really desires');
+			},
+
+			slice: function() {
+				var stringTest = this.stri0;
+				document.getElementById("slice").innerHTML = this.stri0 + '<br>' + '<br>' + stringTest.slice(-6, -1);
+			},
+
+			split: function() {
+				var stringTest = this.stri0
+				document.getElementById("split").innerHTML = this.stri0 + '<br>' + '<br>' + stringTest.split(',').reverse().join('rrrrrr');
+			},
+
+			substring: function() {
+				var stringTest = this.stri0
+				function replaceString(olds, newS, fulls) {
+					for (var i = 0; i < fulls.length; ++i) {
+						if (fulls.substring(i, i + olds.length) == olds) { 
+							fulls = fulls.substring(0, i) + newS + fulls.substring(i + olds.length, fulls.length);
+						}
+					}
+					return fulls;
+				}
+
+				document.getElementById("substring").innerHTML = this.stri0 + '<br>' + '<br>' + replaceString('When', 'Kiedy', stringTest);
+			},
 		}
 	}
 </script>
 <style scoped>
-	pre {
-		color: teal;
-		font-size: 1.05em;
-		line-height: 1.4;
-		padding: 10px;
-		padding-top: 15px;
-		white-space: pre-wrap;
-		word-wrap: break-word;
-	}
-	button {
-		font-size: 1.5em;
-		align-self: flex-end;
-	}
-	.task {
-		background: rgba(0,0,0,.1);
-		margin: 10px auto;
-		margin-bottom: 30px; 
-		max-width: 95%;
-	}
-	.decision {
-		background: rgba(0,0,0,.1);
-		display: grid;
-		grid-gap: 50px;
-		grid-template-columns: 1fr 5fr; 
-		border-bottom: 3px dashed rgba(0,0,0,.7);
-		padding-bottom: 10px;
-		padding: 10px;
-	}
-	.answer {
-		background: black;
-		color: #FFF;
-		padding: 7px;
-		letter-spacing: 2px;
-		width: 100%;
-	}
 
 
 </style>

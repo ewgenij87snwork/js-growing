@@ -4,6 +4,7 @@
 		<nav class="links">
 			<nuxt-link to="/cheatsheet/regexpz"><h2>regexp</h2></nuxt-link>
 			<nuxt-link to="/cheatsheet/stringz"><h2>stringz</h2></nuxt-link>
+			<nuxt-link to="/cheatsheet/arrayz"><h2>arrayz</h2></nuxt-link>
 		</nav>
 		<div class="task">
 			<h1>Node Methods: insertBeforeZ</h1>

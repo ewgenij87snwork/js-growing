@@ -18,6 +18,12 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
+   ** Global CSS
+   */
+  css: [
+     { src: '@assets/mainStyle.sass', lang: 'sass' }
+   ],
+  /*
   ** Build configuration
   */
   build: {
