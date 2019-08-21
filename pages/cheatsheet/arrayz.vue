@@ -1,23 +1,38 @@
 <template>
 	<div class="container">
-		<div class="annotationTask">
-			<p>У меня есть 3 строки:</p>
-			<p><b>stri0:</b> 'When a person really desires something, all the universe conspires to help that person to realize his dream.',</p>
-			<p><b>stri1:</b> 'There is only one thing that makes a dream impossible to achieve: the fear of failure.',</p>
-			<p><b>stri2:</b> 'Be brave. Take risks. Nothing can substitute experience.'</p>
-		</div>
+		<div class="titlePage"><h1>Array Methods</h1></div>
+
 		<div class="task">
 			<div class="decision">
-				<button v-on:click="charAtZ">charAtZ</button>
-				<p class="answer" id="charAtZ">Press button to see result</p>
+				<button v-on:click="concat">concat</button>
+				<p class="answer" id="concat">Press button to see result</p>
 			</div>
-			<pre><code><b>charAtZ:</b> function() {
-		var stringTest = this.stri0;
-		document.getElementById("charAtZ").innerHTML = stringTest.charAt(1);
+			<pre><code><b>concat:</b> function() {
+		var alpha = ['a', 'b', 'c'];
+		var alphaNumeric = alpha.concat(1, [2, 3]);
+		document.getElementById("concat").innerHTML = alpha.concat(1, [2, 3]);
 	}</code></pre>
 			<button v-on:click="show = !show" class="subButton">Show method description</button>
-			<div class="methodDescription"><p v-show="show">привет</p></div>
+				<div class="methodDescription">
+					<transition name="fade" mode="out-in">
+						<p v-show="show">Метод <b>concat()</b> возвращает новый массив, состоящий из массива, на котором он был вызван, соединённого с другими массивами и/или значениями, переданными в качестве аргументов.</p>
+					</transition>
+				</div>
 		</div>
+
+		<div class="task">
+			<div class="decision">
+				<button v-on:click="every">every</button>
+				<p class="answer" id="every">Press button to see result</p>
+			</div>
+			<pre><code><b>every:</b> function() {
+		document.getElementById("every").innerHTML = [12, 54, 18, 130, 44].every(elem => elem >= 10);
+	}</code></pre>
+			<button v-on:click="show = !show" class="subButton">Show method description</button>
+			<div class="methodDescription"><p v-show="show">Метод <b>every()</b> проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.</p></div>
+		</div>
+
+
 	</div>
 </template>
 <script>
@@ -29,12 +44,25 @@
 			}
 		},
 		methods: {
-			charAtZ: function() {
-				var stringTest = "this.stri0";
-				document.getElementById("charAtZ").innerHTML = stringTest.charAt(0);
+			concat: function() {
+				var alpha = ['a', 'b', 'c'];
+
+				var alphaNumeric = alpha.concat(1, [2, 3]);
+				document.getElementById("concat").innerHTML = alpha.concat(1, [2, 3]);
+			},	
+			every: function() {
+				document.getElementById("every").innerHTML = [12, 54, 18, 130, 44].every(elem => elem >= 10);
 			},				
 		}
 	}
 </script>
-<style lang="sass">
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: all .25s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-enter, .fade-leave-to {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
 </style>

@@ -1,3 +1,27 @@
+// MIXINS
+=r($width)
+  @media only screen and (max-width: $width+ "px")
+    @content
+
+
+
+// ------------------------------------------------------------------------
+body 
+	background: rgba(120,100,200,.8) 
+.container
+	min-height: 100vh
+	max-width: 940px
+	margin: 0 auto
+	+r(840)
+	  margin: 0 10px
+.titlePage
+	text-align: center
+	padding: 20px
+	color: #fff
+	text-transform: uppercase
+	font-style: italic
+	letter-spacing: 2px
+
 pre 
 	color: teal
 	font-size: 1.05em
@@ -12,7 +36,8 @@ button
 	align-self: flex-end
 
 .task 
-	background: rgba(0,0,0,.1)
+	background: rgba(0,0,0,.1) 
+	background: #fff
 	margin: 10px auto
 	margin-bottom: 30px 
 	max-width: 95%
@@ -34,6 +59,10 @@ button
 	width: 100%
 
 .subButton
-	font-size: 0.5em
+	font-size: 0.6em
 	text-transform: uppercase
 	font-weight: bold
+	margin-left: 20px
+
+.methodDescription
+	padding: 10px
