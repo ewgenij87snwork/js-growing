@@ -1,87 +1,38 @@
 <template>
 	<div class="container">
 		<div class="titlePage"><h1>Array Methods</h1></div>
+		<div class="workbookText">
+			<h3>	What I realized here?</h3>
+			<ul>
+				<li>Component with form, with little bit of validation. This form take normally written functions and returns functions in JSON string. I need this to save all my lessons in JSON. And next in all task (component) I take  JavaScript code represented as a string and lunch from button in appropriate task-block </li>
+			</ul>
+		</div>
+
+		<convertToJson></convertToJson>
 		<task
-		v-for="task in tasks"
-		v-bind:func="task.func"
-		v-bind:title="task.title"
-		v-bind:codeExemple="task.codeExemple"
-		v-bind:description="task.description"
-		v-bind:key="task.id"
+		:tasks="tasks"
 		/>
-		<div class="task">
-			<div class="decision">
-				<button v-on:click="concat">concat</button>
-				<p class="answer" id="concat">Press button to see result</p>
-			</div>
-			<pre><code><b>concat:</b> function() {
-		var alpha = ['a', 'b', 'c'];
-		document.getElementById("concat").innerHTML = alpha.concat(1, [2, 3]);
-	}</code></pre>
-			<button v-on:click="show = !show" class="subButton">Show method description</button>
-				<div class="methodDescription">
-					<transition name="fade" mode="out-in">
-						<p v-show="show">Метод <b>concat()</b> возвращает новый массив, состоящий из массива, на котором он был вызван, соединённого с другими массивами и/или значениями, переданными в качестве аргументов.</p>
-					</transition>
-				</div>
-		</div>
-
-		<div class="task">
-			<div class="decision">
-				<button v-on:click="every">every</button>
-				<p class="answer" id="every">Press button to see result</p>
-			</div>
-			<pre><code><b>every:</b> function() {
-		document.getElementById("every").innerHTML = [12, 54, 18, 130, 44].every(elem => elem >= 10);
-	}</code></pre>
-			<button v-on:click="show = !show" class="subButton">Show method description</button>
-			<div class="methodDescription">
-				<transition name="fade" mode="out-in">
-					<p v-show="show">Метод <b>every()</b> проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.</p>
-				</transition>
-			</div>
-		</div>
-
-
 	</div>
 </template>
 <script>
+import arraytask from "@/data/arraytask.json";
+import	convertToJson from "@/components/convertToJson";
 import	task from "@/components/task";
 	export default {
 		name: 'arrayz',
+		components: {
+			task,
+			convertToJson
+		},
 		data: function() {
 			return {
-				show: false,
-				tasks: [
-					{
-						id: 1,
-						func: 'concat',
-						title: 'concat',
-						codeExemple: 'bla bla',
-						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis nulla est quaerat aut amet non, cupiditate expedita. Distinctio quidem voluptatibus vero reprehenderit, consequatur corrupti fugiat sequi eius quos, tempora corporis illo optio vel quia quisquam deleniti autem. Quia, maiores, esse.',
-					},
-					{
-						id: 2,
-						func: '2concat',
-						title: '2concat',
-						codeExemple: '2bla bla',
-						description: '2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis nulla est quaerat aut amet non, cupiditate expedita. Distinctio quidem voluptatibus vero reprehenderit, consequatur corrupti fugiat sequi eius quos, tempora corporis illo optio vel quia quisquam deleniti autem. Quia, maiores, esse.',
-					},
-				]
+				tasks: arraytask
 			}
 		},
-		methods: {
-			concat: function() {
-				var alpha = ['a', 'b', 'c'];
-				document.getElementById("concat").innerHTML = alpha.concat(1, [2, 3]);
-			},	
-			every: function() {
-				document.getElementById("every").innerHTML = [12, 54, 18, 130, 44].every(elem => elem >= 10);
-			},				
-		}
 	}
 </script>
 <style>
+/*!!!!!!!!!!!!!!! НАДО ВЗЯТЬ ИЗ ЭНГРИБЕРДС */
 .fade-enter-active, .fade-leave-active {
   transition: all .25s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }

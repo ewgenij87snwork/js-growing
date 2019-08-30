@@ -1,21 +1,17 @@
 <template>
 	<div class="task__container">
-		<div class="task" v-for="item in tasks" :key="item.name">
+		<div class="task" v-for="task in tasks" :key="task.name">
 			<div class="decision">
-				<!-- <button v-on:click="{{ item.func }}">{{ item.name }}</button> -->
-				<!-- <p class="answer" :id="{{ item.name }}">Press button to see result</p> -->
-
-				<!-- Как через пропсы передавать функцию на выполнение?
-				Почему не могу передать в id пропс? :id="{{ item.name }}
-				Почему не могу передать в кнопку название обработчика? v-on:click="{{ item.func }}"> -->
+				<button v-on:click="evaluation">{{ task.name }}</button>
+				<p class="answer" v-bind:id=task.name>Press button to see result</p>
 			</div>
-			<pre><code><b>{{ item.name }}</b> function() {
-		{{ item.codeExemple }}
-			}</code></pre>
-			<button v-on:click="show = !show" class="subButton">Show method description</button>
+			<pre><code>function() {  
+		{{ task.func }} }
+			</code></pre>
+			<button v-on:click="task.show = !task.show" class="subButton">Show method description</button>
 				<div class="methodDescription">
 					<transition name="fade" mode="out-in">
-						<p v-show="show">Метод <b>{{ item.name }}</b> {{ item.description }}</p>
+						<p v-show="task.show">Метод <b>{{ task.name }}</b> {{ task.description }}</p>
 					</transition>
 				</div>
 		</div>
@@ -32,11 +28,13 @@ export default {
   },
   data: function() {
   	return {
-  		show: false,
+  		stringFunc: Object.values(this.tasks[0])[3],
   	}
   },
   methods: {
-  	item.func()
+	  	evaluation: function() {
+	  	      eval(this.stringFunc);
+	  	    }
   }
 }
 </script>

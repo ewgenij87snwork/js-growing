@@ -1,8 +1,5 @@
-# PAGES
+Here I make my workbook to stubdy JavaScript and little NuxtJS. 
 
-This directory contains your Application Views and Routes.
-The framework reads all the .vue files inside this directory and creates the router of your application.
+Fisrt of all I make pages for test main objects (string, array, node, document, window, canvas and others). 
 
-More information about the usage of this directory in the documentation:
-https://nuxtjs.org/guide/routing
-
+In "Array methods" I realized JSON with name methods, description and example function. For use example functions from JSON I applied eval() - this function evaluates JavaScript code represented as a string. 
