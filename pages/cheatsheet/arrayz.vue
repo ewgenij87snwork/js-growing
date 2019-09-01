@@ -11,6 +11,7 @@
 			<h3>What I realized here?</h3>
 			<ul>
 				<li>Component with form, with little bit of validation. This form take normally written functions and returns functions in JSON string. I need this to save all my lessons in JSON. And next in all task (component) I take  JavaScript code represented as a string and lunch from button in appropriate task-block </li>
+				<li>Фух блядь работает! Я добавил метод filter для массивов. Взял пример выполнения этого метода -- код в 3 строчки, рузултат выполнения записывался в переменную result. Через окно textarea я вставил этот код, по нажатию на кнопку я получил отформатированный под строку json'a текст. Перед закрывающими кавычками я вставил свое "а в строчку вывода результата я напишу это: (result)" <small>document.getElementById('filter').innerHTML = result</small>. Ну и полученный результат я вставил в json -- все заработало! </li>
 			</ul>
 		</div>
 
@@ -36,7 +37,7 @@ import arraytask from "@/data/arraytask.json";
 			return {
 				tasks: arraytask
 			}
-		},
+		},	
 	}
 </script>
 <style>

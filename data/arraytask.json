@@ -9,6 +9,18 @@
 	"name": "every",
 	"description": "проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.",
 	"show": false,
-	"func": "var alpha = ['a', 'b', 'c'];document.getElementById('every').innerHTML = alpha.concat(3, [2, 3]);"
+	"func": "document.getElementById('every').innerHTML = [12, 5, 8, 130, 44].every(x => x >= 10);"
+},
+{
+	"name": "filter",
+	"description": "создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.",
+	"show": false,
+	"func": "var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];\n\nconst result = words.filter(word => word.length > 6);\n\nconsole.log(result);\n\ndocument.getElementById('filter').innerHTML = result"
+},
+{
+	"name": "filter2",
+	"description": ", точнее просто filter, создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.",
+	"show": false,
+	"func": "var arr = [\n    { id: 15 },\n    { id: -1 },\n    { id: 0 },\n    { id: 3 },\n    { id: 12.2 },\n    { },\n    { id: null },\n    { id: NaN },\n    { id: 'undefined' }\n];\n\nvar invalidEntries = 0;\n\nfunction isNumber(obj) {\n    return obj!== undefined && typeof(obj) === 'number' && !isNaN(obj);\n}\n\nfunction filterByID(item) {\n    if (isNumber(item.id) && item.id !== 0) {\n        return true;\n    }\n    invalidEntries++;\n    return false;\n}\n\nvar arrByID = arr.filter(filterByID);\n\nconsole.log('Отфильтрованный массив\\n', arrByID);\n// Filtered Array\n// [{ id: 15 }, { id: -1 }, { id: 3 }, { id: 12.2 }]\n\nconsole.log('Количество ошибочных записей = ', invalidEntries);\n// Number of Invalid Entries = 5\n\ndocument.getElementById('filter2').innerHTML = 'Количество ошибочных записей = '+invalidEntries"
 }
 ]

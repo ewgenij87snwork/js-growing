@@ -21,10 +21,13 @@ export default {
 	},
 	methods: {
 		convertFunc: function(e) {
+			var buf
 			if (!this.unformatedFunc) {
 				document.getElementById("unformatedFunc").innerHTML ="введи что-то"
+			} else {
+				buf = JSON.stringify(this.unformatedFunc),
+			    document.getElementById("unformatedFunc").value = buf;
 			}
-
 			e.preventDefault()
 		} 
 	}

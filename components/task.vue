@@ -37,7 +37,6 @@ export default {
   methods: {
 	  	evaluation: function() {
 	  	      eval(this.stringFunc);
-	  	      console.log(this.stringFunc);
 	  	    }
   }
 }
