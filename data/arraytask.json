@@ -8,6 +8,7 @@
 {
 	"name": "every",
 	"description": "проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.",
-	"show": false
+	"show": false,
+	"func": "var alpha = ['a', 'b', 'c'];document.getElementById('every').innerHTML = alpha.concat(3, [2, 3]);"
 }
 ]

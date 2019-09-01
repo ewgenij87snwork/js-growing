@@ -43,7 +43,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: "primary",
+      default: "danger",
       description: "Navbar type (e.g default, primary etc)"
     },
     title: {

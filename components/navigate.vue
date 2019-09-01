@@ -1,44 +1,77 @@
 <template>
-<div class="row">
-	<div>
-	  <base-dropdown>
-	    <base-button slot="title" type="secondary" class="dropdown-toggle">
-	      Regular
-	    </base-button>
-	    <a class="dropdown-item" href="#">Action</a>
-	    <a class="dropdown-item" href="#">Another action</a>
-	    <a class="dropdown-item" href="#">Something else here</a>
-	  </base-dropdown>
-	  <base-dropdown>
-	     <base-button slot="title" type="default" class="dropdown-toggle">
-	        <img src="https://demos.creative-tim.com/argon-design-system/assets/img/icons/flags/US.png" /> Flags
-	     </base-button>
-	       <li>
-	          <a class="dropdown-item" href="#">
-	            <img src="https://demos.creative-tim.com/argon-design-system/assets/img/icons/flags/DE.png" /> Deutsch
-	          </a>
-	      </li>
-	      <li>
-	          <a class="dropdown-item" href="#">
-	            <img src="https://demos.creative-tim.com/argon-design-system/assets/img/icons/flags/GB.png" /> English(UK)
-	          </a>
-	      </li>
-	      <li>
-	          <a class="dropdown-item" href="#">
-	            <img src="https://demos.creative-tim.com/argon-design-system/assets/img/icons/flags/FR.png" /> Français
-	          </a>
-	      </li>
-	  </base-dropdown>
-	</div>
+	<div style="position: relative">
+	  <base-nav type="default" effect="dark" expand>
+	   <a class="navbar-brand" href="/">Home</a>
+	    <div class="row" slot="content-header" slot-scope="{closeMenu}">
+	        <div class="col-6 collapse-brand">
+				<a class="navbar-brand text-default" href="/">Home</a>
+	            
+	        </div>
+	        <div class="col-6 collapse-close">
+	            <close-button @click="closeMenu"></close-button>
+	        </div>
+	    </div>
+	    <ul class="navbar-nav ml-lg-auto">
+	        <base-dropdown tag="li" title="Base JS tasks">
+	          <a class="dropdown-item" href="/osnovy/osnovy-yazyka-javascript-dlya-novichkov">Основы работы с JavaScript</a>
+	        </base-dropdown>
+	        <base-dropdown tag="li" title="Cheatsheets Practice">
+	          <a class="dropdown-item" href="/cheatsheet/regexpz">RegExp</a>
+	          <a class="dropdown-item" href="/cheatsheet/stringz">String</a>
+	          <a class="dropdown-item" href="/cheatsheet/arrayz">Array</a>
+	          <!-- <div class="dropdown-divider"></div>
+	          <a class="dropdown-item" href="#">Separated link</a> -->
+	        </base-dropdown>
+	        <li class="nav-item">
+               <a href="#" class="nav-link nav-link-icon" @click="modals.modal0 = true">
+                  Contacts <i class="fa fa-address-book-o fa-spin fa-fw" aria-hidden="true"></i>
+               </a>
+              
+	        </li>
+	    </ul>
+	  </base-nav><modal :show.sync="modals.modal0">
+                <template slot="header">
+                   <h5 class="modal-title" id="exampleModalLabel">Contacts</h5>
+                </template>
+                <div>
+                 <a href="mailto:ewgenij87snwork@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> ewgenij87snwork@gmail.com</a>
+                 <br>
+                 <br>
+                 <a href="https://www.facebook.com/profile.php?id=100002256371507"><i class="fa fa-facebook-official" aria-hidden="true"></i> Ewgenij Sorokin</a>
+                 <br>
+                 <br>
+                 <a href="tel:+48-791-660-787"><i class="fa fa-phone-square" aria-hidden="true"></i> +48-791-660-787</a>
+                 <br>
+                 <br>
+                 <a href="https://ewgenij87snwork.herokuapp.com"><i class="fa fa-male fa-2x" aria-hidden="true"></i> Portfolio-rezume</a>
+                </div>
+                <template slot="footer">
+                    <base-button type="secondary" @click="modals.modal0 = false">Close</base-button>
+                </template>
+              </modal>
 </div>
 </template>
 <script>
-import BaseNav from "@/argon/components/BaseNav"
   export default {
+  	name: 'navigate',
+    components: {
+    	'BaseNav': () =>import('@/argon/components/BaseNav'),
+    	'BaseDropdown': () => import('@/argon/components/BaseDropdown'),
+    	'NavbarToggleButton': () => import('@/argon/components/NavbarToggleButton'),
+    	'CloseButton': () => import('@/argon/components/CloseButton'),
+    	'Modal': () => import('@/argon/components/Modal')
+    },
     data(){
         return {
-            
+            modals: {
+              modal0: false
+            }
         }
      }
   }
 </script>
+<style lang="sass" scoped>
+.nav-item
+	padding-left: 3em
+
+</style>

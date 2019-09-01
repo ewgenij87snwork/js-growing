@@ -4,9 +4,10 @@
                :class="[{show: isOpen}, {'dropdown': direction === 'down'}, {'dropup': direction ==='up'}]"
                aria-haspopup="true"
                :aria-expanded="isOpen"
+               @mouseover="isOpen = true"
+               @mouseleave="isOpen = false"
                @click="toggleDropDown"
                v-click-outside="closeDropDown">
-
         <slot name="title">
             <a class="dropdown-toggle nav-link"
                :class="{'no-caret': hideArrow}"
@@ -68,8 +69,8 @@ export default {
     closeDropDown() {
       this.isOpen = false;
       this.$emit("change", this.isOpen);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
@@ -79,5 +80,8 @@ export default {
 
 .dropdown .dropdown-toggle {
   cursor: pointer;
+}
+.dropdown:hover .dropdown-menu {
+display: block;
 }
 </style>

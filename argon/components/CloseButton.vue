@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="navbar-toggler"
+    <button type="button" class="navbar-toggler seccess"
             data-toggle="collapse"
             @click="handleClick"
             :data-target="`#${target}`"

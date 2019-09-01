@@ -31,12 +31,13 @@ export default {
   },
   data: function() {
   	return {
-  		stringFunc: Object.values(this.tasks[0])[3],
+  		stringFunc: Object.values(this.tasks[1])[3],
   	}
   },
   methods: {
 	  	evaluation: function() {
 	  	      eval(this.stringFunc);
+	  	      console.log(this.stringFunc);
 	  	    }
   }
 }

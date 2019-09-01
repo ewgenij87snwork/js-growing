@@ -22,13 +22,11 @@
 </template>
 <script>
 import arraytask from "@/data/arraytask.json";
-import	convertToJson from "@/components/convertToJson";
-import	task from "@/components/task";
 	export default {
 		name: 'arrayz',
 		components: {
-			task,
-			convertToJson
+			'task': () => import('@/components/task'),
+			'convertToJson': () => import('@/components/convertToJson')
 		},
 		data: function() {
 			return {
