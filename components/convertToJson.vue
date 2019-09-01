@@ -6,7 +6,7 @@
 			<textarea class="form-control form-control-alternative" name="unformatedFunc" id="unformatedFunc" v-model="unformatedFunc" cols="100" rows="10"></textarea>
 			<input
 			  type="submit"
-			  value="Отправить"
+			  value="Convert to JSON"
 			>
 		</form>
 	</div>
