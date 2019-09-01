@@ -16,7 +16,11 @@
 
 		<convertToJson></convertToJson>
 		<task
-		:tasks="tasks"
+		v-for=" task in tasks"
+		v-bind:key="task.name"
+		v-bind:name="task.name"
+		v-bind:description="task.description"
+		v-bind:func="task.func"
 		/>
 	</div>
 </template>

@@ -1,20 +1,20 @@
 <template>
 	<div class="task__container">
-		<div class="task" v-for="task in tasks" :key="task.name">
+		<div class="task">
 			<div class="decision ct-example-row">
 				<div class="row">
-					<base-button type="default" v-on:click="evaluation" class="answer__button col col-lg-2">{{ task.name }}</base-button>
-					<p class="answer col text-center" v-bind:id=task.name><badge type="default">Press button to see result</badge></p>
+					<base-button type="default" v-on:click="evaluation" class="answer__button col col-lg-2">{{ name }}</base-button>
+					<p class="answer col text-center" v-bind:id=name><badge type="default">Press button to see result</badge></p>
 				</div>
 			</div>
 			
 			<pre><code>function() {  
-		{{ task.func }} }
+		{{ func }} }
 			</code></pre>
-			<button v-on:click="task.show = !task.show" class="subButton">Show method description</button>
+			<button v-on:click="show = !show" class="subButton">Show method description</button>
 				<div class="methodDescription">
 					<transition name="fade" mode="out-in">
-						<p v-show="task.show">Метод <u>{{ task.name }}</u> {{ task.description }}</p>
+						<p v-show="show">Метод <u>{{ name }}</u> {{ description }}</p>
 					</transition>
 				</div>
 		</div>
@@ -24,14 +24,14 @@
 <script>
 export default {
   props: {
-	tasks: {
-		type:Array,
-		required: true
-	}
+	name: '',
+	description: '',
+	func: ''
   },
   data: function() {
   	return {
-  		stringFunc: Object.values(this.tasks[1])[3],
+  		show: false,
+  		stringFunc: this.func,
   	}
   },
   methods: {
