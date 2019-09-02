@@ -6,10 +6,22 @@
 	"func": "var alpha = ['a', 'b', 'c'];document.getElementById('concat').innerHTML = alpha.concat(1, [2, 3]);"
 },
 {
+	"name": "copyWithin",
+	"description": " копирует последовательность элементов массива внутри него в позицию, начинающуюся по индексу target. Копия берётся по индексам, задаваемым вторым и третьим аргументами start и end. Аргумент end является необязательным и по умолчанию равен длине массива. <small><i>arr.copyWithin(target, start[, end = this.length])</i></small>",
+	"show": false,
+	"func": "[1, 2, 3, 4, 5].copyWithin(0, 3);\n// [4, 5, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, 3, 4);\n// [4, 2, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, -2, -1);\n// [4, 2, 3, 4, 5]\n\n[].copyWithin.call({length: 5, 3: 1}, 0, 3);\n// {0: 1, 3: 1, length: 5}\n\n// Типизированные массивы ES6 являются подклассами Array\nvar i32a = new Int32Array([1, 2, 3, 4, 5]);\n\ni32a.copyWithin(0, 2);\n// Int32Array [3, 4, 5, 4, 5]\n\n// На платформах, которые ещё не совместимы с ES6:\n[].copyWithin.call(new Int32Array([1, 2, 3, 4, 5]), 0, 3, 4);\n// Int32Array [4, 2, 3, 4, 5]\n\ndocument.getElementById('copyWithin').innerHTML = [1, 2, 3, 4, 5].copyWithin(0, -2, -1)"
+},
+{
 	"name": "every",
 	"description": "проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.",
 	"show": false,
 	"func": "document.getElementById('every').innerHTML = [12, 5, 8, 130, 44].every(x => x >= 10);"
+},
+{
+	"name": "entries",
+	"description": "озвращает новый объект итератора массива Array Iterator, содержащий пары ключ / значение для каждого индекса в массиве.",
+	"show": false,
+	"func": "var arr = ['a', 'b', 'c'];\nvar eArr = arr.entries();\n\nconsole.log(eArr.next().value); // [0, 'a']\nconsole.log(eArr.next().value); // [1, 'b']\nconsole.log(eArr.next().value); // [2, 'c']\n\ndocument.getElementById('entries').innerHTML = eArr.next().value\n"
 },
 {
 	"name": "filter",
@@ -22,5 +34,11 @@
 	"description": ", точнее просто filter, создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.",
 	"show": false,
 	"func": "var arr = [\n    { id: 15 },\n    { id: -1 },\n    { id: 0 },\n    { id: 3 },\n    { id: 12.2 },\n    { },\n    { id: null },\n    { id: NaN },\n    { id: 'undefined' }\n];\n\nvar invalidEntries = 0;\n\nfunction isNumber(obj) {\n    return obj!== undefined && typeof(obj) === 'number' && !isNaN(obj);\n}\n\nfunction filterByID(item) {\n    if (isNumber(item.id) && item.id !== 0) {\n        return true;\n    }\n    invalidEntries++;\n    return false;\n}\n\nvar arrByID = arr.filter(filterByID);\n\nconsole.log('Отфильтрованный массив\\n', arrByID);\n// Filtered Array\n// [{ id: 15 }, { id: -1 }, { id: 3 }, { id: 12.2 }]\n\nconsole.log('Количество ошибочных записей = ', invalidEntries);\n// Number of Invalid Entries = 5\n\ndocument.getElementById('filter2').innerHTML = 'Количество ошибочных записей = '+invalidEntries"
+},
+{
+	"name": "from",
+	"description": "создаёт новый экземпляр Array из массивоподобного или итерируемого объекта.",
+	"show": false,
+	"func": "// Использование стрелочной функции в качестве функции отображения для\n\n// манипулирования элементами\nArray.from([1, 2, 3], x => x + x); \n// [2, 4, 6] \n\n// Генерирования последовательности чисел\nArray.from({ length: 5 }, (v, k) => k); \n// [0, 1, 2, 3, 4]\n\ndocument.getElementById('from').innerHTML = Array.from({ length: 5 }, (v, k) => k)"
 }
 ]

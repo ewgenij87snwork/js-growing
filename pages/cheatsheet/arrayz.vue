@@ -16,14 +16,14 @@
 			</ul>
 		</div>
 
-		<convertToJson></convertToJson>
 		<task
-		v-for=" task in tasks"
-		v-bind:key="task.name"
-		v-bind:name="task.name"
-		v-bind:description="task.description"
-		v-bind:func="task.func"
+		v-for="item in items"
+		v-bind:key="item.name"
+		v-bind:name="item.name"
+		v-bind:description="item.description"
+		v-bind:func="item.func"
 		/>
+		<convertToJson></convertToJson>
 	</div>
 </template>
 <script>
@@ -36,7 +36,11 @@ import arraytask from "@/data/arraytask.json";
 		},
 		data: function() {
 			return {
-				tasks: arraytask
+				items: arraytask,
+				pagination: {
+				       default: 1,
+				       items: []
+				     }
 			}
 		},	
 	}
