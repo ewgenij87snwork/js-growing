@@ -36,11 +36,7 @@ import arraytask from "@/data/arraytask.json";
 		},
 		data: function() {
 			return {
-				items: arraytask,
-				pagination: {
-				       default: 1,
-				       items: []
-				     }
+				items: arraytask
 			}
 		},	
 	}
