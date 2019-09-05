@@ -1,32 +1,30 @@
 [
 {
-	"name": "concat",
-	"description": "возвращает новый массив, состоящий из массива, на котором он был вызван, соединённого с другими массивами и/или значениями, переданными в качестве аргументов.",
-	"show": false,
-	"func": "var alpha = ['a', 'b', 'c'];document.getElementById('concat').innerHTML = alpha.concat(1, [2, 3]);"
-},
-{
 	"name": "copyWithin",
 	"description": " копирует последовательность элементов массива внутри него в позицию, начинающуюся по индексу target. Копия берётся по индексам, задаваемым вторым и третьим аргументами start и end. Аргумент end является необязательным и по умолчанию равен длине массива. <small><i>arr.copyWithin(target, start[, end = this.length])</i></small>",
-	"show": false,
+	"syntax": "arr.copyWithin(target, start[, end = this.length])",
+	"syntaxDescr": "target\nНачальный индекс позиции цели, куда копировать элементы.\nstart\nНачальный индекс позиции источника, откуда начинать копировать элементы.\nend\nНеобязательный параметр. Конечный индекс позиции источника, где заканчивать копировать элементы.",
 	"func": "[1, 2, 3, 4, 5].copyWithin(0, 3);\n// [4, 5, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, 3, 4);\n// [4, 2, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, -2, -1);\n// [4, 2, 3, 4, 5]\n\n[].copyWithin.call({length: 5, 3: 1}, 0, 3);\n// {0: 1, 3: 1, length: 5}\n\n// Типизированные массивы ES6 являются подклассами Array\nvar i32a = new Int32Array([1, 2, 3, 4, 5]);\n\ni32a.copyWithin(0, 2);\n// Int32Array [3, 4, 5, 4, 5]\n\n// На платформах, которые ещё не совместимы с ES6:\n[].copyWithin.call(new Int32Array([1, 2, 3, 4, 5]), 0, 3, 4);\n// Int32Array [4, 2, 3, 4, 5]\n\ndocument.getElementById('copyWithin').innerHTML = [1, 2, 3, 4, 5].copyWithin(0, -2, -1)"
-},
-{
-	"name": "every",
-	"description": "проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.",
-	"show": false,
-	"func": "document.getElementById('every').innerHTML = [12, 5, 8, 130, 44].every(x => x >= 10);"
 },
 {
 	"name": "entries",
 	"description": "озвращает новый объект итератора массива Array Iterator, содержащий пары ключ / значение для каждого индекса в массиве.",
-	"show": false,
-	"func": "var arr = ['a', 'b', 'c'];\nvar eArr = arr.entries();\n\nconsole.log(eArr.next().value); // [0, 'a']\nconsole.log(eArr.next().value); // [1, 'b']\nconsole.log(eArr.next().value); // [2, 'c']\n\ndocument.getElementById('entries').innerHTML = eArr.next().value\n"
+	"syntax": "arr.entries()",
+	"syntaxDescr": "",
+	"func": "var arr = ['a', 'b', 'c'];\nvar eArr = arr.entries();\n\nconsole.log(eArr.next().value); // [0, 'a']\nconsole.log(eArr.next().value); // [1, 'b']\nconsole.log(eArr.next().value); // [2, 'c']\n\ndocument.getElementById('entries').innerHTML = 'хз как вывести сюда, а не в консоль']\n"
+},
+{
+	"name": "every",
+	"description": "проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.",
+	"syntax": "arr.every(callback(currentValue[, index[, array]])[, thisArg])",
+	"syntaxDescr": "callback\nФункция проверки каждого элемента, принимает три аргумента:\ncurrentValue\nТекущий обрабатываемый элемент массива.\nindexНеобязательный\nИндекс текущего обрабатываемого элемента массива.\narrayНеобязательный\nМассив, по которому осуществляется проход.\nthisArgНеобязательный\nНеобязательный параметр. Значение, используемое в качестве this при выполнении функции callback.",
+	"func": "document.getElementById('every').innerHTML = [12, 5, 8, 130, 44].every(x => x >= 10);"
 },
 {
 	"name": "filter",
 	"description": "создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.",
-	"show": false,
+	"syntax": "var newArray = arr.filter(callback[, thisArg])\n\n//var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])",
+	"syntaxDescr": "callback\nФункция, которая будет вызвана для каждого элемента массива. Если функция возвращает true, то элемент остаётся в массиве, если false, то удаляется. В функцию будет передано три аргумента:\nelement\nТекущий обрабатываемый элемент в массиве.\nindexНеобязательный\nИндекс текущего обрабатываемого элемента в массиве.\narrayНеобязательный\nМассив, по которому осуществляется проход.\nthisArg Необязательный\nНеобязательный параметр. Значение, используемое в качестве this при вызове функции callback.",
 	"func": "var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];\n\nconst result = words.filter(word => word.length > 6);\n\nconsole.log(result);\n\ndocument.getElementById('filter').innerHTML = result"
 },
 {
@@ -92,5 +90,10 @@
 	"name": "splice",
 	"description": "изменяет содержимое массива, удаляя существующие элементы и/или добавляя новые.",
 	"func": "var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];\nvar removed = myFish.splice(2, 0, 'drum');\n\n// myFish равен [\"angel\", \"clown\", \"drum\", \"mandarin\", \"sturgeon\"] \n// removed равен [], ничего не удалено\n\nvar myFish = ['angel', 'clown', 'trumpet', 'sturgeon'];\nvar removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');\n\n// myFish равен [\"parrot\", \"anemone\", \"blue\", \"trumpet\", \"sturgeon\"] \n// removed равен [\"angel\", \"clown\"]\n\ndocument.getElementById('splice').textContent = myFish"
+},
+{
+	"name": "unshift",
+	"description": "добавляет один или более элементов в начало массива и возвращает новую длину массива",
+	"func": "var arr = [1, 2];\n\narr.unshift(0); // результат вызова равен 3, новой длине массива\n// arr равен [0, 1, 2]\n\narr.unshift(-2, -1); // = 5\n// arr равен [-2, -1, 0, 1, 2]\n\ndocument.getElementById('unshift').textContent = arr.unshift(-2, -1);"
 }
 ]

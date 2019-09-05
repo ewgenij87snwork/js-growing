@@ -20,6 +20,8 @@
 		v-for="item in items"
 		v-bind:key="item.name"
 		v-bind:name="item.name"
+		v-bind:syntax="item.syntax"
+		v-bind:syntaxDescr="item.syntaxDescr"
 		v-bind:description="item.description"
 		v-bind:func="item.func"
 		/>

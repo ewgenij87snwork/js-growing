@@ -11,12 +11,24 @@
 			<pre><code>function() {  
 		{{ func }} }
 			</code></pre>
-			<button v-on:click="show = !show" class="subButton">Show method description</button>
-				<div class="methodDescription">
-					<transition name="fade" mode="out-in">
-						<p v-show="show">Метод <u>{{ name }}</u> {{ description }}</p>
-					</transition>
-				</div>
+			<div class="bottomTask">
+				<base-button type="secondary" v-on:click="show = !show" class="subButton">Show description</base-button>
+				<base-button type="secondary" v-on:click="showSyntax = !showSyntax" class="subButton">Show syntax</base-button>
+			</div>
+			
+			<div class="methodDescription">
+				<transition name="fade" mode="out-in">
+					<p v-show="show">Метод <u>{{ name }}</u> {{ description }}</p>
+				</transition>
+			</div>
+			<div class="methodDescription">
+				<transition name="fade" mode="out-in">
+					<div v-show="showSyntax">
+						<p class="syntax text-muted text-default" >{{ syntax }}</p>
+						<code><pre class="text-muted">{{ syntaxDescr }}</pre></code>
+					</div>
+				</transition>
+			</div>
 		</div>
 	</div>
 </template>
@@ -25,12 +37,15 @@
 export default {
   props: {
 	name: '',
+	syntax: '',
+	syntaxDescr: '',
 	description: '',
 	func: ''
   },
   data: function() {
   	return {
   		show: false,
+  		showSyntax: false,
   		stringFunc: this.func,
   	}
   },
@@ -42,16 +57,17 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
-
 .task 
 	background: rgba(0,0,0,.1)
 	margin: 20px auto
+	padding: 5px 15px
 .decision 
 	background: rgba(0,0,0,.1)
 	border-bottom: 3px dashed rgba(0,0,0,.7)
 	padding: 7px
+	margin: -5px -15px
+	margin-bottom: 10px
 	.row
 		margin: 5px
 .answer 
@@ -67,8 +83,16 @@ export default {
 	font-size: 0.6em
 	text-transform: uppercase
 	font-weight: bold
-	margin-left: 20px
-	
+.bottomTask
+	display: flex
+	justify-content: space-between
+	padding-bottom: 5px
+.syntax
+	margin-top: 10px
 .methodDescription
-	padding: 10px
+	padding-left: 10px
+	padding-bottom: 5px
+pre
+	margin-bottom: 0
+
 </style>

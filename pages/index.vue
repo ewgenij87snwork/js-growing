@@ -14,11 +14,11 @@ export default {
 
 }
 </script>
+<style lang="sass">
+@import "@/assets/mainStyle.sass"
+h2
+  color: #2D1DA5
 
-<style>
-  h2 {
-    color: #2D1DA5;
-  }
 
 </style>
 

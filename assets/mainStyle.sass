@@ -1,19 +1,26 @@
-
+// width
 =r($width)
   @media only screen and (max-width: $width+ "px")
     @content
 
+=rmin($width)
+  @media only screen and (min-width: $width+ "px")
+    @content
+
+// height
+=rh($height)
+  @media only screen and (max-height: $height + "px")
+    @content
+
+=rhmin($height)
+  @media only screen and (min-height: $height + "px")
+    @content
+
+
 
 
 // ------------------------------------------------------------------------
-body 
-	background: rgba(120,100,200,.8) 
-// .container
-// 	min-height: 100vh
-// 	max-width: 940px
-// 	margin: 0 auto
-// 	+r(840)
-// 	  margin: 0 10px
+
 .titlePage
 	text-align: center
 	padding: 20px
@@ -22,16 +29,10 @@ body
 	letter-spacing: 2px
 
 pre 
-	color: teal
-	font-size: 1.05em
-	line-height: 1.4
-	padding: 10px
-	padding-top: 15px
 	white-space: pre-wrap
 	word-wrap: break-word
+	margin-bottom: 0
+	color: #FFF 
 
-button 
-	font-size: 1.5em
-	align-self: flex-end
 
 
