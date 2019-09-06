@@ -7,11 +7,10 @@
 					<p class="answer col text-center" v-bind:id=name><badge type="default">Press button to see result</badge></p>
 				</div>
 			</div>
-
-			<pre v-show="funcText"><code>function() {  
-	{{ stringFunc }} }
+			
+			<pre><code>function() {  
+		{{ func }} }
 			</code></pre>
-				
 			<div class="bottomTask">
 				<base-button type="secondary" v-on:click="show = !show" class="subButton">Show description</base-button>
 				<base-button type="secondary" v-on:click="showSyntax = !showSyntax" class="subButton">Show syntax</base-button>
@@ -41,34 +40,20 @@ export default {
 	syntax: '',
 	syntaxDescr: '',
 	description: '',
-	func: '',
-	func2: '',
+	func: ''
   },
   data: function() {
   	return {
-  		clickCounter: 0,
   		show: false,
   		showSyntax: false,
   		stringFunc: this.func,
-  		funcText: true,
   	}
   },
   methods: {
 	  	evaluation: function() {
-  		  this.clickCounter = this.clickCounter + 1;
-	  	  switch (this.clickCounter) {
-	  	  	case 1:
-	  	  		this.stringFunc = this.func;
-	  	  		eval(this.stringFunc);
-	  	  		break;
-	  	  	case 2:
-	  	  		this.stringFunc = this.func2;
-	  	  		eval(this.stringFunc);
-	  	  		this.clickCounter = 0;
-	  	  		break;
-	  	  	}
-  	    }
-  },
+	  	      eval(this.stringFunc);
+	  	    }
+  }
 }
 </script>
 

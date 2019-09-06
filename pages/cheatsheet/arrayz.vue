@@ -24,6 +24,7 @@
 		v-bind:syntaxDescr="item.syntaxDescr"
 		v-bind:description="item.description"
 		v-bind:func="item.func"
+		v-bind:func2="item.func2"
 		/>
 		<convertToJson></convertToJson>
 	</div>

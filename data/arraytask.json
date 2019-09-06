@@ -1,17 +1,19 @@
 [
 {
 	"name": "copyWithin",
-	"description": " копирует последовательность элементов массива внутри него в позицию, начинающуюся по индексу target. Копия берётся по индексам, задаваемым вторым и третьим аргументами start и end. Аргумент end является необязательным и по умолчанию равен длине массива. <small><i>arr.copyWithin(target, start[, end = this.length])</i></small>",
+	"description": " копирует последовательность элементов массива внутри него в позицию, начинающуюся по индексу target. Копия берётся по индексам, задаваемым вторым и третьим аргументами start и end. Аргумент end является необязательным и по умолчанию равен длине массива. ",
 	"syntax": "arr.copyWithin(target, start[, end = this.length])",
 	"syntaxDescr": "target\nНачальный индекс позиции цели, куда копировать элементы.\nstart\nНачальный индекс позиции источника, откуда начинать копировать элементы.\nend\nНеобязательный параметр. Конечный индекс позиции источника, где заканчивать копировать элементы.",
-	"func": "[1, 2, 3, 4, 5].copyWithin(0, 3);\n// [4, 5, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, 3, 4);\n// [4, 2, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, -2, -1);\n// [4, 2, 3, 4, 5]\n\n[].copyWithin.call({length: 5, 3: 1}, 0, 3);\n// {0: 1, 3: 1, length: 5}\n\n// Типизированные массивы ES6 являются подклассами Array\nvar i32a = new Int32Array([1, 2, 3, 4, 5]);\n\ni32a.copyWithin(0, 2);\n// Int32Array [3, 4, 5, 4, 5]\n\n// На платформах, которые ещё не совместимы с ES6:\n[].copyWithin.call(new Int32Array([1, 2, 3, 4, 5]), 0, 3, 4);\n// Int32Array [4, 2, 3, 4, 5]\n\ndocument.getElementById('copyWithin').innerHTML = [1, 2, 3, 4, 5].copyWithin(0, -2, -1)"
+	"func": "[1, 2, 3, 4, 5].copyWithin(0, 3);\n// [4, 5, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, 3, 4);\n// [4, 2, 3, 4, 5]\n\n[1, 2, 3, 4, 5].copyWithin(0, -2, -1);\n// [4, 2, 3, 4, 5]\n\n[].copyWithin.call({length: 5, 3: 1}, 0, 3);\n// {0: 1, 3: 1, length: 5}\n\n// Типизированные массивы ES6 являются подклассами Array\nvar i32a = new Int32Array([1, 2, 3, 4, 5]);\n\ni32a.copyWithin(0, 2);\n// Int32Array [3, 4, 5, 4, 5]\n\n// На платформах, которые ещё не совместимы с ES6:\n[].copyWithin.call(new Int32Array([1, 2, 3, 4, 5]), 0, 3, 4);\n// Int32Array [4, 2, 3, 4, 5]\n\ndocument.getElementById('copyWithin').innerHTML = [1, 2, 3, 4, 5].copyWithin(0, -2, -1)",
+	"func2": "\ndocument.getElementById('copyWithin').innerHTML = 'asdfadsfadfaf'"
 },
 {
 	"name": "entries",
 	"description": "озвращает новый объект итератора массива Array Iterator, содержащий пары ключ / значение для каждого индекса в массиве.",
 	"syntax": "arr.entries()",
 	"syntaxDescr": "",
-	"func": "var arr = ['a', 'b', 'c'];\nvar eArr = arr.entries();\n\nconsole.log(eArr.next().value); // [0, 'a']\nconsole.log(eArr.next().value); // [1, 'b']\nconsole.log(eArr.next().value); // [2, 'c']\n\ndocument.getElementById('entries').innerHTML = 'хз как вывести сюда, а не в консоль']\n"
+	"func": "var arr = ['a', 'b', 'c'];\nvar eArr = arr.entries();\n\nconsole.log(eArr.next().value); // [0, 'a']\nconsole.log(eArr.next().value); // [1, 'b']\nconsole.log(eArr.next().value); // [2, 'c']\n\ndocument.getElementById('entries').innerHTML = 'хз как вывести сюда, а не в консоль']\n",
+	"func2": "\ndocument.getElementById('copyWithin').innerHTML = 'asdfadsfadfaf'"
 },
 {
 	"name": "every",
@@ -30,8 +32,14 @@
 {
 	"name": "filter2",
 	"description": ", точнее просто filter, создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.",
-	"show": false,
 	"func": "var arr = [\n    { id: 15 },\n    { id: -1 },\n    { id: 0 },\n    { id: 3 },\n    { id: 12.2 },\n    { },\n    { id: null },\n    { id: NaN },\n    { id: 'undefined' }\n];\n\nvar invalidEntries = 0;\n\nfunction isNumber(obj) {\n    return obj!== undefined && typeof(obj) === 'number' && !isNaN(obj);\n}\n\nfunction filterByID(item) {\n    if (isNumber(item.id) && item.id !== 0) {\n        return true;\n    }\n    invalidEntries++;\n    return false;\n}\n\nvar arrByID = arr.filter(filterByID);\n\nconsole.log('Отфильтрованный массив\\n', arrByID);\n// Filtered Array\n// [{ id: 15 }, { id: -1 }, { id: 3 }, { id: 12.2 }]\n\nconsole.log('Количество ошибочных записей = ', invalidEntries);\n// Number of Invalid Entries = 5\n\ndocument.getElementById('filter2').innerHTML = 'Количество ошибочных записей = '+invalidEntries"
+},
+{
+	"name": "flatMap",
+	"description": " сначала применяет функцию к каждому элементу, а затем преобразует полученый результат в плоскую структуру и помещает в новый массив. Это идентично map фукнции, с последующим применением функции flat с параметром depth ( глубина ) равным 1, но flatMap часто бывает полезным, так как работает немного более эффективно. Метод flat() возвращает новый массив, в котором все элементы вложенных подмассивов были рекурсивно \"подняты\" на указанный уровень depth.",
+	"syntax": "var new_array = arr.flatMap(function callback(currentValue[, index[, array]]) {\n\n// возращает элемент для new_array\n}[, thisArg])",
+	"syntaxDescr": "callback\nФункция которая производит элементы нового массива, принимает три аргумента:\n \ncurrentValue\nТекущий обрабатываемый элемент массива.\nindexНеобязательный\nИндекс обрабатываемого элемента в массиве.\narrayНеобязательный\nМассив по которому осуществляется обход.\nthisArgНеобязательный\nЗначение используемое в качестве this при вызове функции callback.",
+	"func": "let arr1 = [1, 2, 3, 4];\n\narr1.map(x => [x * 2]); \n// [[2], [4], [6], [8]]\n\narr1.flatMap(x => [x * 2]);\n// [2, 4, 6, 8]\n\n// выравнивается только один уровень\narr1.flatMap(x => [[x * 2]]);\n// [[2], [4], [6], [8]]\n\ndocument.getElementById('flatMap').textContent = arr1.flatMap(x => [[x * 2]]);"
 },
 {
 	"name": "forEach",
