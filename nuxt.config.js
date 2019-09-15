@@ -17,7 +17,7 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  plugins: ['@/plugins/argon'],
+  plugins: ['@/plugins/vue-highlightjs', '@/plugins/argon'],
   /*
    ** Global CSS
    */
@@ -28,6 +28,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: ['vue-highlightjs'],
     /*
     ** Run ESLint on save
     */

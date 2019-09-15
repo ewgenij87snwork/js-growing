@@ -7,68 +7,70 @@
 					<p class="answer col text-center" v-bind:id=name><badge type="default">Press button to see result</badge></p>
 				</div>
 			</div>
-
-			<pre v-show="funcText"><code>function() {  
-	{{ stringFunc }} }
-			</code></pre>
+			<div class="functionBlock">
+				<pre v-show="funcText" v-highlightjs><code class="javascript">function() { <br>{{ stringFunc }} }
+				</code></pre>
 				
-			<div class="bottomTask">
-				<base-button type="secondary" v-on:click="show = !show" class="subButton">Show description</base-button>
-				<base-button type="secondary" v-on:click="showSyntax = !showSyntax" class="subButton">Show syntax</base-button>
-			</div>
+				<div class="bottomTask">
+					<base-button type="secondary" v-on:click="show = !show" class="subButton">Show description</base-button>
+					<base-button type="secondary" v-on:click="showSyntax = !showSyntax" class="subButton">Show syntax</base-button>
+				</div>
 			
-			<div class="methodDescription">
-				<transition name="fade" mode="out-in">
-					<p v-show="show">Метод <u>{{ name }}</u> {{ description }}</p>
-				</transition>
-			</div>
-			<div class="methodDescription">
-				<transition name="fade" mode="out-in">
-					<div v-show="showSyntax">
-						<p class="syntax text-muted text-default" >{{ syntax }}</p>
-						<code><pre class="text-muted">{{ syntaxDescr }}</pre></code>
-					</div>
-				</transition>
+				<div class="methodDescription">
+					<transition name="fade" mode="out-in">
+						<p v-show="show">Метод <u>{{ name }}</u> {{ description }}</p>
+					</transition>
+				</div>
+				<div class="methodDescription">
+					<transition name="fade" mode="out-in">
+						<div v-show="showSyntax">
+							<p class="syntax text-primary" >{{ syntax }}</p>
+							<code><pre class="text-muted">{{ syntaxDescr }}</pre></code>
+						</div>
+					</transition>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+
+import VueHighlightJS from 'vue-highlightjs';
 export default {
-  props: {
+	props: {
 	name: '',
 	syntax: '',
 	syntaxDescr: '',
 	description: '',
 	func: '',
-	func2: '',
-  },
-  data: function() {
-  	return {
-  		clickCounter: 0,
-  		show: false,
-  		showSyntax: false,
-  		stringFunc: this.func,
-  		funcText: true,
-  	}
-  },
-  methods: {
-	  	evaluation: function() {
-  		  this.clickCounter = this.clickCounter + 1;
-	  	  switch (this.clickCounter) {
-	  	  	case 1:
-	  	  		this.stringFunc = this.func;
-	  	  		eval(this.stringFunc);
-	  	  		break;
-	  	  	case 2:
-	  	  		this.stringFunc = this.func2;
-	  	  		eval(this.stringFunc);
-	  	  		this.clickCounter = 0;
-	  	  		break;
-	  	  	}
-  	    }
-  },
+	funcTwo: '',
+	},
+	data: function() {
+		return {
+			clickCounter: 0,
+			show: false,
+			showSyntax: false,
+			stringFunc: this.func,
+			funcText: true,
+		}
+	},
+	methods: {
+		evaluation: function() {
+			this.clickCounter = this.clickCounter + 1;
+			switch (this.clickCounter) {
+				case 1:
+					this.stringFunc = this.func;
+					eval(this.stringFunc);
+					break;
+				case 2:
+					this.stringFunc = this.funcTwo;
+					eval(this.stringFunc);
+					this.clickCounter = 0;
+					break;
+				}
+			}
+	},
 }
 </script>
 
@@ -76,15 +78,15 @@ export default {
 .task 
 	background: rgba(0,0,0,.1)
 	margin: 20px auto
-	padding: 5px 15px
 .decision 
 	background: rgba(0,0,0,.1)
-	border-bottom: 3px dashed rgba(0,0,0,.7)
+	border-bottom: 5px dashed rgba(0,0,0,.7)
 	padding: 7px
-	margin: -5px -15px
-	margin-bottom: 10px
 	.row
 		margin: 5px
+.functionBlock
+	background: #263238 
+	padding: 15px
 .answer 
 	background: #8898aa
 	color: #FFF
@@ -104,10 +106,13 @@ export default {
 	padding-bottom: 5px
 .syntax
 	margin-top: 10px
+	color: #fff 
 .methodDescription
 	padding-left: 10px
 	padding-bottom: 5px
+.javascript
+	background: none 
 pre
-	margin-bottom: 0
+	margin-bottom: 0px
 
 </style>
