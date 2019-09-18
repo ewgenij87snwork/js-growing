@@ -1,30 +1,29 @@
 <template>
   <div class="grain__out">
-    <!-- grain - зерно -->
   	<div class="grain__wrap">
-      <div class="grain__container" v-for="grain in grain" v-bind:key="grain.id">
-    		<div><h3  class="grain__title">{{ grain.title }}</h3></div>
-        <div class="grain__explain">{{ grain.explain }}</div>
+      <div class="grain__container">
+    		<div><h2  class="grain__title text-center ">{{ title }}</h2></div>
+        <div class="grain__explain">{{ explain }}</div>
         <div class="grain__code code">
-          <pre v-highlightjs="grain.code"><code class="javascript"></code></pre>
-        </div>
+          <pre v-highlightjs="example"><code class="javascript"></code></pre>
+        </div>        
 
-        <!-- sprout - паросток. Здесь подразумевается, что полученное знание я смог понять -->
-        <div class="sprout" v-show="showSprout">
-
-          <p class="sprout__explain">{{ grain.sprout.explain }}</p>
-          <div class="sprout__use">
-            <div class="code">
-              <pre v-highlightjs="grain.sprout.code"><code class="javascript"></code></pre>
-            </div>
-            <div class="sprout__decision">
-              <div class="row">
-                <base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
-                <p class="sprout__result text-center col" v-bind:id=grain.name>Press button to see result</p>
+        <transition name="slideInDown">
+          <div class="sprout" v-show="showSprout">
+            <p class="sprout__explain">{{ concept }}</p>
+            <div class="sprout__use">
+              <div class="code">
+                <pre v-highlightjs="code"><code class="javascript"></code></pre>
+              </div>
+              <div class="sprout__decision">
+                <div class="row">
+                  <base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
+                  <p class="sprout__result text-center col" v-bind:id=name>Press button to see result</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </transition>
 
         <base-button v-on:click="showSprout = !showSprout" class="sprout__button" size="sm" type="secondary">
           <div v-show="!showSprout"><i class="fas fa-double-down"></i> Show</div>
@@ -40,17 +39,24 @@
 export default {
   name: 'grain',
   props: {
-  	grain: Array,
+    name: '',
+    title: '',
+    explain: '',
+    example: '',
+    concept: '',
+    code: '',
   },
   data: function() {
     return {
       showSprout: false,
+      result: ''
     }
   },
+
   methods: {
     evaluation: function() {
-      eval(this.grain.code);
-      document.getElementById(this.grain.name).textContent = JSON.stringify(this.myVar)
+      var k = eval(this.code);
+      document.getElementById(this.name).textContent =k;
     }
   }
 }
@@ -58,6 +64,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass"> 
+// -----Transition ---------------------
+
+.slideInDown-enter-active
+  animation: slideInDown 1.5s
+
+.slideInDown-leave-active
+  animation: slideInDown 1.5s reverse
+
+@keyframes slideInDown
+  from
+    transform: translate3d(0, -100%, 0)
+    visibility: visible
+
+  to
+    transform: translate3d(0, 0, 0)
+
+
+@keyframes slideOutDown
+  from
+    transform: translate3d(0, 0, 0)
+
+  to
+    visibility: hidden
+    transform: translate3d(0, 100%, 0)
+// ----- End Transition ----------------
 .grain
   &__out
     max-width: 940px
@@ -76,6 +107,7 @@ export default {
     padding-bottom: 40px
     background: rgba(0,0,0,.1) 
   &__title
+    margin-bottom: 1rem
   &__explain
     margin-bottom: 1rem
   &__code

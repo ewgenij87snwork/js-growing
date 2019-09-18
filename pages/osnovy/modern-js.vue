@@ -4,7 +4,14 @@
 		:intro=intro
 		/>
 		<grain
-		:grain=grains
+		v-for="grain in grains"
+		v-bind:key="grain.id"
+		v-bind:name="grain.name"
+		v-bind:title="grain.title"
+		v-bind:explain="grain.explain"
+		v-bind:example="grain.example"
+		v-bind:concept="grain.sprout.concept"
+		v-bind:code="grain.sprout.code"
 		/>
 		<base-button @click="pageLoader(onPageLoadingFinished)" type="success">Boom!</base-button>
 		<convertToJson></convertToJson>

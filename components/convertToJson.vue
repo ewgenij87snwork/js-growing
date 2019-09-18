@@ -3,7 +3,11 @@
 		<form
 		id="formConvert"
 		@submit="convertFunc">
-			<textarea class="form-control form-control-alternative" name="unformatedFunc" id="unformatedFunc" v-model="unformatedFunc" cols="100" rows="10"></textarea>
+			<textarea class="form-control form-control-alternative bg-lighter" name="unformatedFunc" id="unformatedFunc" v-model="unformatedFunc" cols="100" rows="10" 
+			placeholder="
+Нужно вставить тело функции 
+После нажатия кнопки 'Convert to JSON', дописать чему будет равен вывод: 'var result ='
+Скопировать в JSON"></textarea>
 			<input
 			  type="submit"
 			  value="Convert to JSON"
@@ -25,7 +29,8 @@ export default {
 			if (!this.unformatedFunc) {
 				document.getElementById("unformatedFunc").innerHTML ="введите что-то"
 			} else {
-				buf = JSON.stringify(this.unformatedFunc),
+				buf = this.unformatedFunc + 'var result = ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);'
+				buf = JSON.stringify(buf);
 			    document.getElementById("unformatedFunc").value = buf;
 			}
 			e.preventDefault()
@@ -34,10 +39,13 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-	.col, .col-sm, .col-6, .col-12
-		outline: 1px solid black
-	div.col-12.col-md-8
-		background: teal 
-	.ct-example-row
-		margin: 10px 
+textarea
+	background: teeal 
+
+.col, .col-sm, .col-6, .col-12
+	outline: 1px solid black
+div.col-12.col-md-8
+	background: teal 
+.ct-example-row
+	margin: 10px 
 </style>
