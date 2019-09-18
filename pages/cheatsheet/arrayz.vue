@@ -12,7 +12,6 @@
 			<ul>
 				<li>Component with form, with little bit of validation. This form take normally written functions and returns functions in JSON string. I need this to save all my lessons in JSON. And next in all task (component) I take  JavaScript code represented as a string and lunch from button in appropriate task-block </li>
 				<li>Also I made mini-cheatsheets: just name and description for Array's methods - <a class="navbar-brand text-default" href="/cheatsheet/arrayzmini">Array to Print</a></li>
-				<li>Add highlight (Docco styles)</li>
 			</ul>
 		</div>
 
@@ -26,7 +25,6 @@
 		v-bind:func="item.func"
 		v-bind:funcTwo="item.funcTwo"
 		/>
-		<convertToJson></convertToJson>
 	</div>
 </template>
 <script>

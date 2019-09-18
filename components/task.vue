@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="functionBlock">
-				<pre v-show="funcText" v-highlightjs><code class="javascript">function() { <br>{{ stringFunc }} }
+				<pre v-show="funcText" v-highlightjs="stringFunc"><code class="javascript">function() { <br> }
 				</code></pre>
 				
 				<div class="bottomTask">
@@ -35,8 +35,6 @@
 </template>
 
 <script>
-
-import VueHighlightJS from 'vue-highlightjs';
 export default {
 	props: {
 	name: '',
@@ -77,7 +75,8 @@ export default {
 <style scoped lang="sass">
 .task 
 	background: rgba(0,0,0,.1)
-	margin: 20px auto
+	margin: 45px auto
+	border-bottom: 2px dotted rgba(0,0,0,.7)
 .decision 
 	background: rgba(0,0,0,.1)
 	border-bottom: 5px dashed rgba(0,0,0,.7)
@@ -85,8 +84,9 @@ export default {
 	.row
 		margin: 5px
 .functionBlock
-	background: #263238 
+	background: #1D262B 
 	padding: 15px
+	padding-bottom: 0
 .answer 
 	background: #8898aa
 	color: #FFF
@@ -110,8 +110,11 @@ export default {
 .methodDescription
 	padding-left: 10px
 	padding-bottom: 5px
+	p
+		margin-bottom: 0
 .javascript
 	background: none 
+	margin-bottom: 15px
 pre
 	margin-bottom: 0px
 

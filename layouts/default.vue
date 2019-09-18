@@ -13,6 +13,5 @@
 </script>
 <style lang="sass">
 
-@import "@/assets/mainStyle.sass"
 </style>
 

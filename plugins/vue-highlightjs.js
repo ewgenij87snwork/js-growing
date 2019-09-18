@@ -7,7 +7,7 @@ import VueHighlightJS from 'vue-highlightjs'
 import css from 'highlight.js/lib/languages/css';
 import javascript from 'highlight.js/lib/languages/javascript';
 
-import 'highlight.js/styles/_myrial.css';
+import 'highlight.js/styles/hybrid.css';
 
 /*
  * Use Vue Highlight.js

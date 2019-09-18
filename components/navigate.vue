@@ -14,7 +14,7 @@
 			<ul class="navbar-nav ml-lg-auto">
 					<base-dropdown tag="li" title="Base JS tasks">
 						<a class="dropdown-item" href="/osnovy/osnovy-yazyka-javascript-dlya-novichkov">Основы работы с JavaScript</a>
-						<a class="dropdown-item" href="/osnovy/promise-async">Промисы, async/await</a>
+						<a class="dropdown-item" href="/osnovy/modern-js">Промисы, async/await</a>
 					</base-dropdown>
 					<base-dropdown tag="li" title="Cheatsheets Practice">
 						<a class="dropdown-item" href="/cheatsheet/regexpz">RegExp</a>
