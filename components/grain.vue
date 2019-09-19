@@ -1,45 +1,43 @@
 <template>  
-	<transition-show>
-		<div class="grain__out">
-			<div class="grain__container">
-				<div><h2  class="grain__title text-center ">{{ title }}</h2></div>
-				<div class="grain__explain">{{ explain }}</div>
-				<div class="grain__code code">
-					<pre v-highlightjs="example"><code class="javascript"></code></pre>
-				</div>        
+	<div class="grain__out">
+		<div class="grain__container">
+			<div><h2  class="grain__title text-center ">{{ title }}</h2></div>
+			<div class="grain__explain">{{ explain }}</div>
+			<div class="grain__code code">
+				<pre v-highlightjs="example"><code class="javascript"></code></pre>
+			</div>        
 
-				<transition-show>
-					<div class="sprout" v-show="showSprout">
-						<p class="sprout__explain">{{ concept }}</p>
-						<div class="sprout__use">
-							<div class="code">
-								<pre v-highlightjs="code"><code class="javascript"></code></pre>
-							</div>
-							<div class="sprout__decision">
-								<div class="row">
-									<base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
-									<p class="sprout__result text-center col" v-bind:id=name>Press button to see result</p>
-								</div>
+			<transition-height>
+				<div class="sprout" v-show="showSprout">
+					<p class="sprout__explain">{{ concept }}</p>
+					<div class="sprout__use">
+						<div class="code">
+							<pre v-highlightjs="code"><code class="javascript"></code></pre>
+						</div>
+						<div class="sprout__decision">
+							<div class="row">
+								<base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
+								<p class="sprout__result text-center col" v-bind:id=name>Press button to see result</p>
 							</div>
 						</div>
 					</div>
-				</transition-show>
+				</div>
+			</transition-height>
 
-				<base-button v-on:click="showSprout = !showSprout" class="sprout__button" size="sm" type="secondary">
-					<div v-show="!showSprout"><i class="fas fa-double-down"></i> Show</div>
-					<div v-show="showSprout"><i class="fas fa-double-up"></i> Hide</div>
-				</base-button>
+			<base-button v-on:click="showSprout = !showSprout" class="sprout__button" size="sm" type="secondary">
+				<div v-show="!showSprout"><i class="fas fa-double-down"></i> Show</div>
+				<div v-show="showSprout"><i class="fas fa-double-up"></i> Hide</div>
+			</base-button>
 
-			</div>
 		</div>
-	</transition-show>
+	</div>
 </template>
 
 <script>
 export default {
 	name: 'grain',
 	components: {
-		'transition-show': () => import('@/components/transition-show'),
+		'transition-height': () => import('@/components/transition-height'),
 	},
 	props: {
 		name: '',
@@ -99,16 +97,6 @@ export default {
 		+r(960)
 			margin: 15px
 	&__container
-		// transition: height 1.2s ease-in
-		// height: auto
-		// max-height: 1200px
-		// overflow: hidden
-		// -webkit-transition: height 1.2s e
-		// transition: height 1.2s
-		// 	transition-property: height
-		// 	transition-duration: 1.2s
-		// 	transition-timing-function: ease
-		// 	transition-delay: 0s
 		margin-bottom: 100px    
 		border-top: 1px solid black
 		border-bottom: 1px solid black    
@@ -122,7 +110,6 @@ export default {
 	&__explain
 		margin-bottom: 1rem
 	&__code
-		margin-bottom: 1rem
 		border: 1px solid #fff
 		-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 		-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
@@ -131,15 +118,14 @@ export default {
 
 .sprout
 	position: relative
-	margin-bottom: 1rem
-	margin-top: 3rem
+	// margin-bottom: 1rem
 	&__use
 		-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 		-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 		box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 	&__explain
 		padding: 5px
-		
+		padding-top: 3rem
 	&__decision
 		background: rgba(0,0,0,.1)
 		padding: 7px
@@ -147,6 +133,7 @@ export default {
 			margin: 0 5px
 	&__button
 		float: right
+		margin-top: 25px
 	code
 		background: #000
 		padding-bottom: 1rem

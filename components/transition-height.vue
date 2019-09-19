@@ -1,6 +1,6 @@
 <template>
   <transition
-    name="show"
+    name="height"
     @enter="enter"
     @after-enter="afterEnter"
     @leave="leave"
@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  name: 'TransitionShow',
+  name: 'TransitionHeight',
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;
@@ -66,14 +66,14 @@ export default {
   backface-visibility: hidden;
   perspective: 1000px;
 }
-.show-enter-active,
-.show-leave-active {
-  transition: height 2s ease-in-out;
+.height-enter-active,
+.height-leave-active {
+  transition: height .6s ease-in-out;
   overflow: hidden;
 }
 
-.show-enter,
-.show-leave-to {
+.height-enter,
+.height-leave-to {
   height: 0;
 }
 </style>
