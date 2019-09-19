@@ -3,16 +3,20 @@
 		<introduction
 		:intro=intro
 		/>
-		<grain
-		v-for="grain in grains"
-		v-bind:key="grain.id"
-		v-bind:name="grain.name"
-		v-bind:title="grain.title"
-		v-bind:explain="grain.explain"
-		v-bind:example="grain.example"
-		v-bind:concept="grain.sprout.concept"
-		v-bind:code="grain.sprout.code"
-		/>
+		
+		<div class="grain_wrapper">
+			<grain
+			v-for="grain in grains"
+			v-bind:key="grain.id"
+			v-bind:name="grain.name"
+			v-bind:title="grain.title"
+			v-bind:explain="grain.explain"
+			v-bind:example="grain.example"
+			v-bind:concept="grain.sprout.concept"
+			v-bind:code="grain.sprout.code"
+			></grain>
+		</div>
+		
 		<base-button @click="pageLoader(onPageLoadingFinished)" type="success">Boom!</base-button>
 		<convertToJson></convertToJson>
 	</div>
@@ -48,4 +52,29 @@ export default {
 }
 </script>
 <style scoped lang="sass">
+// -----Transition ---------------------
+
+.slideInDown-enter-active
+  animation: slideInDown 1.5s
+
+.slideInDown-leave-active
+  animation: slideInDown 1.5s reverse
+
+@keyframes slideInDown
+  from
+    transform: translate3d(0, -100%, 0)
+    visibility: visible
+
+  to
+    transform: translate3d(0, 0, 0)
+
+
+@keyframes slideOutDown
+  from
+    transform: translate3d(0, 0, 0)
+
+  to
+    visibility: hidden
+    transform: translate3d(0, 100%, 0)
+// ----- End Transition ----------------
 </style>
