@@ -1,7 +1,7 @@
 <template>  
 	<div class="grain__out">
 		<div class="grain__container">
-			<div><h2  class="grain__title text-center ">{{ title }}</h2></div>
+			<div><h2  class="grain__title text-center">{{ title }}</h2></div>
 			<div class="grain__explain">{{ explain }}</div>
 			<div class="grain__code code">
 				<pre v-highlightjs="example"><code class="javascript"></code></pre>
@@ -9,7 +9,7 @@
 
 			<transition-height>
 				<div class="sprout" v-show="showSprout">
-					<p class="sprout__explain">{{ concept }}</p>
+					<div id="concept"><transition name="slideInDown"><p class="sprout__concept" v-if="sproutConceptShow">{{ concept }}</p></transition></div>
 					<div class="sprout__use">
 						<div class="code">
 							<pre v-highlightjs="code"><code class="javascript"></code></pre>
@@ -24,7 +24,7 @@
 				</div>
 			</transition-height>
 
-			<base-button v-on:click="showSprout = !showSprout" class="sprout__button" size="sm" type="secondary">
+			<base-button v-on:click="showSprout = !showSprout, sproutAnimation()" class="sprout__button" size="sm" type="secondary">
 				<div v-show="!showSprout"><i class="fas fa-double-down"></i> Show</div>
 				<div v-show="showSprout"><i class="fas fa-double-up"></i> Hide</div>
 			</base-button>
@@ -50,7 +50,8 @@ export default {
 	data: function() {
 		return {
 			showSprout: false,
-			result: ''
+			result: '',
+			sproutConceptShow: false
 		}
 	},
 
@@ -58,8 +59,16 @@ export default {
 		evaluation: function() {
 			var k = eval(this.code);
 			document.getElementById(this.name).textContent =k;
+		},
+		sproutAnimation: function() {
+				var concept = document.getElementById('concept');
+				this.sproutConceptShow = false;
+			setTimeout(() =>{
+				this.sproutConceptShow = true
+			}, 4000)
 		}
-	}
+	},
+	watch: {}
 }
 </script>
 
@@ -69,9 +78,11 @@ export default {
 
 .slideInDown-enter-active
 	animation: slideInDown 1.5s
+	animation-delay: 5s
 
 .slideInDown-leave-active
 	animation: slideInDown 1.5s reverse
+	animation-delay: 5s
 
 @keyframes slideInDown
 	from
@@ -123,9 +134,12 @@ export default {
 		-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 		-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 		box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
-	&__explain
+		// opacity: 0
+	&__concept
 		padding: 5px
 		padding-top: 3rem
+		
+		// opacity: .5
 	&__decision
 		background: rgba(0,0,0,.1)
 		padding: 7px
