@@ -9,26 +9,29 @@
 
 			<transition-height>
 				<div class="sprout" v-show="showSprout">
-					<div id="concept"><transition name="slideInDown"><p class="sprout__concept" v-if="sproutConceptShow">{{ concept }}</p></transition></div>
-					<div class="sprout__use">
-						<div class="code">
-							<pre v-highlightjs="code"><code class="javascript"></code></pre>
-						</div>
-						<div class="sprout__decision">
-							<div class="row">
-								<base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
-								<p class="sprout__result text-center col" v-bind:id=name>Press button to see result</p>
+					<transition name="opa">
+						<p class="sprout__concept" v-if="sproutConcept">{{ concept }}</p>
+					</transition>
+					<transition name="code">
+						<div class="sprout__use" >
+							<div class="code" v-if="sproutCode">
+								<pre v-highlightjs="code"><code class="javascript" ></code></pre>
+							</div>
+							<div class="sprout__decision" v-if="sproutDecision">
+								<div class="row">
+									<base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
+									<p class="sprout__result text-center col" v-bind:id=name>Press button to see result</p>
+								</div>
 							</div>
 						</div>
-					</div>
+					</transition>
 				</div>
 			</transition-height>
 
-			<base-button v-on:click="showSprout = !showSprout, sproutAnimation()" class="sprout__button" size="sm" type="secondary">
+			<base-button v-on:click="zapusk" class="sprout__button" size="sm" type="secondary">
 				<div v-show="!showSprout"><i class="fas fa-double-down"></i> Show</div>
 				<div v-show="showSprout"><i class="fas fa-double-up"></i> Hide</div>
 			</base-button>
-
 		</div>
 	</div>
 </template>
@@ -50,8 +53,10 @@ export default {
 	data: function() {
 		return {
 			showSprout: false,
-			result: '',
-			sproutConceptShow: false
+			sproutConcept: true,
+			sproutCode: true,
+			sproutDecision: true,
+
 		}
 	},
 
@@ -60,47 +65,82 @@ export default {
 			var k = eval(this.code);
 			document.getElementById(this.name).textContent =k;
 		},
-		sproutAnimation: function() {
-				var concept = document.getElementById('concept');
-				this.sproutConceptShow = false;
-			setTimeout(() =>{
-				this.sproutConceptShow = true
-			}, 4000)
-		}
+		zapusk: function() {
+			this.showSprout = !this.showSprout;
+			this.sproutConcept = false;
+			this.sproutCode = false;
+			setTimeout(() => {this.sproutConcept = true}, 900);
+			setTimeout(() => {this.sproutCode = true}, 900);
+			setTimeout(() => {this.sproutDecision = true}, 900);
+		  },
 	},
 	watch: {}
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- ___________________________________________________________________________________________________ -->
+<!-- ___________________________________________________________________________________________________ -->
 <style scoped lang="sass"> 
-// -----Transition ---------------------
 
-.slideInDown-enter-active
-	animation: slideInDown 1.5s
-	animation-delay: 5s
-
-.slideInDown-leave-active
-	animation: slideInDown 1.5s reverse
-	animation-delay: 5s
-
-@keyframes slideInDown
-	from
-		transform: translate3d(0, -100%, 0)
-		visibility: visible
-
-	to
-		transform: translate3d(0, 0, 0)
+// ----- Transition Opa ----------------------------------------------------
 
 
-@keyframes slideOutDown
-	from
-		transform: translate3d(0, 0, 0)
+.opa-enter-active
+  animation: opa .5s
 
-	to
-		visibility: hidden
-		transform: translate3d(0, 100%, 0)
-// ----- End Transition ----------------
+.opa-leave-active
+  animation: opa .45s reverse
+
+@keyframes opa
+  0%
+    opacity: 0
+  50%
+    opacity: 0
+  70%
+    opacity: 0.5
+
+  to
+    opacity: 1
+
+// ----- End Transition "opa" ----------------------------------------------------
+
+
+// ----- Transition "code" --------------------------------------------------------
+.code-enter-active
+  animation: codess 3.2s
+.code-leave-active
+  animation: opa .45s reverse
+  
+@keyframes code
+  0%
+    font-size: 0
+    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0)
+    border: 0px
+    background: rgba(0,0,0,0) 
+  26.5%
+    background: rgba(0,0,0,0) 
+  37.5%
+    background: rgba(0,0,0,1) 
+
+  45.3%
+    border: 0px
+  56.25%
+    border: 2px solid #fff
+    
+  64.1%
+    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0)
+  75%
+    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
+
+  82.8%
+    font-size: 0rem 
+  90%
+    font-size: 1rem 
+
+
+// ----- End Transition "code" ----------------------------------------------------
+
+
+// ----- All styles -----------------------------------------------------------
 .grain
 	&__out
 		max-width: 940px
@@ -125,6 +165,7 @@ export default {
 		-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 		-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
 		box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75)
+		z-index: 100
 		
 
 .sprout

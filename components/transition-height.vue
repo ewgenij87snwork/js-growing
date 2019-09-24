@@ -68,7 +68,7 @@ export default {
 }
 .height-enter-active,
 .height-leave-active {
-  transition: height .6s ease-in-out;
+  transition: height .9s ease-in-out;
   overflow: hidden;
 }
 
