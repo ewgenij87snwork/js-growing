@@ -24,7 +24,7 @@
 				<div class="methodDescription">
 					<transition name="fade" mode="out-in">
 						<div v-show="showSyntax">
-							<p class="syntax text-primary" >{{ syntax }}</p>
+							<p class="syntax" >{{ syntax }}</p>
 							<code><pre class="text-muted">{{ syntaxDescr }}</pre></code>
 						</div>
 					</transition>
@@ -37,12 +37,12 @@
 <script>
 export default {
 	props: {
-	name: '',
-	syntax: '',
-	syntaxDescr: '',
-	description: '',
-	func: '',
-	funcTwo: '',
+		name: '',
+		syntax: '',
+		syntaxDescr: '',
+		description: '',
+		func: '',
+		funcTwo: '',
 	},
 	data: function() {
 		return {
@@ -106,10 +106,11 @@ export default {
 	padding-bottom: 5px
 .syntax
 	margin-top: 10px
-	color: #fff 
+	color: #CFD0F4 
 .methodDescription
 	padding-left: 10px
 	padding-bottom: 5px
+	color: #EFEFEF 
 	p
 		margin-bottom: 0
 .javascript

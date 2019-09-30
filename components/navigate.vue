@@ -13,13 +13,14 @@
 			</div>
 			<ul class="navbar-nav ml-lg-auto">
 					<base-dropdown tag="li" title="Base JS tasks">
-						<a class="dropdown-item" href="/osnovy/osnovy-yazyka-javascript-dlya-novichkov">Основы работы с JavaScript</a>
-						<a class="dropdown-item" href="/osnovy/modern-js">Промисы, async/await</a>
+						<li><a class="dropdown-item" href="/osnovy/osnovy-yazyka-javascript-dlya-novichkov">Основы работы с JavaScript</a></li>
+						<li><a class="dropdown-item" href="/osnovy/regexp-primary">RegExp на примерах 33</a></li>
+						<li><a class="dropdown-item" href="/osnovy/modern-js">Промисы, async/await</a></li>
 					</base-dropdown>
 					<base-dropdown tag="li" title="Cheatsheets Practice">
-						<a class="dropdown-item" href="/cheatsheet/regexpz">RegExp</a>
-						<a class="dropdown-item" href="/cheatsheet/stringz">String</a>
-						<a class="dropdown-item" href="/cheatsheet/arrayz">Array</a>
+						<li><a class="dropdown-item" href="/cheatsheet/regexpz">RegExp</a></li>
+						<li><a class="dropdown-item" href="/cheatsheet/stringz">String</a></li>
+						<li><a class="dropdown-item" href="/cheatsheet/arrayz">Array</a></li>
 						<!-- <div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Separated link</a> -->
 					</base-dropdown>

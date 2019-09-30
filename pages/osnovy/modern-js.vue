@@ -1,8 +1,8 @@
 <template>
 	<div class="out">
-		<introduction
+<!-- 		<introduction
 		:intro=intro
-		/>
+		/> -->
 		
 		<div class="grain_wrapper">
 			<grain
