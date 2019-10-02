@@ -12,10 +12,10 @@
 					</div>
 			</div>
 			<ul class="navbar-nav ml-lg-auto">
-					<base-dropdown tag="li" title="Base JS tasks">
-						<li><a class="dropdown-item" href="/osnovy/osnovy-yazyka-javascript-dlya-novichkov">Основы работы с JavaScript</a></li>
+					<base-dropdown tag="li" title="Main JavaScript">
+						<li><a class="dropdown-item" href="/osnovy/osnovy-yazyka-javascript-dlya-novichkov">Basics JavaScript tasks</a></li>
 						<li><a class="dropdown-item" href="/osnovy/regexp-primary">RegExp на примерах 33</a></li>
-						<li><a class="dropdown-item" href="/osnovy/modern-js">Промисы, async/await</a></li>
+						<li><a class="dropdown-item" href="/osnovy/modern-js">Modern JS</a></li>
 					</base-dropdown>
 					<base-dropdown tag="li" title="Cheatsheets Practice">
 						<li><a class="dropdown-item" href="/cheatsheet/regexpz">RegExp</a></li>

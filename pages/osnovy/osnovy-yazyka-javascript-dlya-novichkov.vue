@@ -1,6 +1,7 @@
 <template>
 	<div class="container">
-		<h1 class="titlePage">Основы работы с JavaScript</h1>
+		<br>
+		<h1 class="titlePage">Basics JavaScript</h1>
 		<p class="lead">По кнопке "Решить" в консоле отображается ответ на данное задание. В последующей учебе я реализовал отображение ответов прямо на странице</p>
 		<div class="task">
 			<h1>#1</h1>
