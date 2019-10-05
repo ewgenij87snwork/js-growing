@@ -1,16 +1,16 @@
 <template>
 	<div class="container">
+		<br>
 		<div class="titlePage"><h1>Array Methods</h1></div>
 		<blockquote class="blockquote text-right">
-		    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-		    <footer class="blockquote-footer">Someone famous in
-		      <cite title="Source Title">Source Title</cite>
+		    <p class="mb-0">Не ошибается тот, кто ничего не делает.</p>
+		    <footer class="blockquote-footer">Мудрость
+		      <cite title="Source Title"></cite>
 		    </footer>
 		</blockquote>
 		<div class="workbookText">
-			<h3>What I realized here?</h3>
+			<br>
 			<ul>
-				<li>Component with form, with little bit of validation. This form take normally written functions and returns functions in JSON string. I need this to save all my lessons in JSON. And next in all task (component) I take  JavaScript code represented as a string and lunch from button in appropriate task-block </li>
 				<li>Also I made mini-cheatsheets: just name and description for Array's methods - <a class="navbar-brand text-default" href="/cheatsheet/arrayzmini">Array to Print</a></li>
 			</ul>
 		</div>

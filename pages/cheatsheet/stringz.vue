@@ -1,5 +1,6 @@
 <template>
 	<div class="container">
+		<br>
 		<h1>String и её методы</h1>
 		<div class="annotationTask">
 			<p>У меня есть 3 строки:</p>
@@ -7,6 +8,7 @@
 			<p><b>stri1:</b> 'There is only one thing that makes a dream impossible to achieve: the fear of failure.',</p>
 			<p><b>stri2:</b> 'Be brave. Take risks. Nothing can substitute experience.'</p>
 		</div>
+		<br>
 
 		<div class="task">
 			<div class="decision">
