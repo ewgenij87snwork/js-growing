@@ -113,23 +113,23 @@ export default {
 
 // ----- Transition "code" --------------------------------------------------------
 .code-enter-active
-	animation: code 2.2s
+	animation: code 2.5s
 .code-leave-active
-	animation: opa 5.25s reverse
+	animation: opa .25s reverse
 	
 @keyframes code
 	0%
 		opacity: 0
 		border: 2px solid white
 		background: rgba(255,255,255,0) 
-	26.5%
+	30%
 		background: rgba(255,255,255,.3) 
 		opacity: 0
 		box-shadow: none
-	37.5%
+	41%
 		opacity: .5
 		border: 2px solid rgba(0,0,0,0.3)
-	56.25%
+	60%
 		opacity: 1
 		border: 2px solid rgba(0,0,0,0.9)
 		box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
@@ -142,7 +142,7 @@ export default {
 
 // ----- Begin Transition "code-text" ----------------------------------------------------
 .code-text-enter-active
-	animation: code-text 2.2s
+	animation: code-text 2.5s
 .code-text-leave-active
 	animation: code-text 4s reverse
 
