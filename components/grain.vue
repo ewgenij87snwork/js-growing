@@ -6,7 +6,7 @@
 			<div class="grain__code code">
 				<pre v-highlightjs="example"><code class="javascript"></code></pre>
 			</div>        
-<!-- Моя концепция "крупицы" (grain) заключается в том, что я получаю знание и нахожу как его использовать -->
+<!-- Моя концепция "крупицы" (grain) заключается в том, что я получаю знание и интерпретирую как его использовать -->
 			<transition-height>
 				<div class="sprout" v-show="showSprout">
 					<transition name="opa">

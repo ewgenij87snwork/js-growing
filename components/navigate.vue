@@ -24,6 +24,7 @@
 						<li><a class="dropdown-item" href="/cheatsheet/regexpz">RegExp</a></li>
 						<li><a class="dropdown-item" href="/cheatsheet/stringz">String</a></li>
 						<li><a class="dropdown-item" href="/cheatsheet/arrayz">Array</a></li>
+						<li><a class="dropdown-item" href="/cheatsheet/todo">To Do</a></li>
 						<!-- <div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Separated link</a> -->
 					</base-dropdown>
