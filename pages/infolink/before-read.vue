@@ -22,6 +22,27 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'PWA',
+					link: 'https://habr.com/ru/post/418923/'
+				},{
+					name: 'Основные заблуждения о SCRUM',
+					link: 'https://habr.com/ru/post/456196/'
+				},{
+					name: 'Производительность анимаций на сайтах',
+					link: 'https://habr.com/ru/post/450484/'
+				},{
+					name: 'Пагинация во Vue.js',
+					link: 'https://habr.com/ru/post/417119/'
+				},{
+					name: '10 структур данных, которые вы должны знать',
+					link: 'https://proglib.io/p/data-structures/'
+				},{
+					name: 'Топ-5 мегатрендов фронтенд-разработки',
+					link: 'https://techrocks.ru/2019/04/18/top-5-frontend-development-megatrends/'
+				},{
+					name: 'Советы сеньоров: как прокачать знания junior Front-end/JavaScript',
+					link: 'https://dou.ua/lenta/articles/senior-frontend-tips/'
+				},{
 					name: '5 вещей, которые чаще всего не понимают новички в JavaScript',
 					link: 'https://habr.com/ru/company/otus/blog/466873/'
 				},{

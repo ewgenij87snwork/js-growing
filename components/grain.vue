@@ -15,7 +15,9 @@
 						<div class="sprout__use" >
 							<transition name="code">
 								<div class="code" v-if="sproutCode">
-									<pre v-highlightjs="code"><code class="javascript" ></code></pre>
+									<transition name="code-text">
+										<pre v-highlightjs="code" v-if="sproutCodeText"><code class="javascript" ></code></pre>
+									</transition>
 								</div>
 							</transition>
 <!-- 							<transition name="opa">
@@ -58,6 +60,7 @@ export default {
 			sproutConcept: true,
 			sproutCode: true,
 			sproutDecision: true,
+			sproutCodeText: true,
 
 		}
 	},
@@ -71,10 +74,12 @@ export default {
 			this.showSprout = !this.showSprout;
 			this.sproutConcept = false;
 			this.sproutCode = false;
+			this.sproutCodeText = false;
 			setTimeout(() => {this.sproutConcept = true}, 900);
 			setTimeout(() => {this.sproutCode = true}, 900);
+			setTimeout(() => {this.sproutCodeText = true}, 900);
 			// setTimeout(() => {this.sproutDecision = true}, 900);
-		  },
+			},
 	},
 	watch: {}
 }
@@ -87,70 +92,73 @@ export default {
 
 
 .opa-enter-active
-  animation: opa .5s
+	animation: opa .5s
 
 .opa-leave-active
-  animation: opa .45s reverse
+	animation: opa .45s reverse
 
 @keyframes opa
-  0%
-    opacity: 0
-  50%
-    opacity: 0
-  70%
-    opacity: 0.5
+	0%
+		opacity: 0
+	50%
+		opacity: 0
+	70%
+		opacity: 0.5
 
-  to
-    opacity: 1
+	to
+		opacity: 1
 
 // ----- End Transition "opa" ----------------------------------------------------
 
 
 // ----- Transition "code" --------------------------------------------------------
-// 3.2s --> .032s =1% Исходя из этого я рассчитывал (изначально) сколько будет .25с и .35с -- это на паузу между анимациями и анимацию определнного стиля.
 .code-enter-active
-  animation: code 3.2s
-  ::nth-child(2)
-  	animation: opa 4s
+	animation: code 2.2s
 .code-leave-active
-  animation: opa .25s reverse
-  
+	animation: opa 5.25s reverse
+	
 @keyframes code
-  0%
-    opacity: 0
-    border: 2px solid black
-    background: rgba(0,0,0,0) 
-  26.5%
-    background: rgba(0,0,0,0) 
-    opacity: 0
-  37.5%
-    border: 2px solid black
-    box-shadow: none
-    opacity: 1
-    background: rgba(0,0,0,1) 
-  45.3%
+	0%
+		opacity: 0
+		border: 2px solid white
+		background: rgba(255,255,255,0) 
+	26.5%
+		background: rgba(255,255,255,.3) 
+		opacity: 0
+		box-shadow: none
+	37.5%
+		opacity: .5
+		border: 2px solid rgba(0,0,0,0.3)
+	56.25%
+		opacity: 1
+		border: 2px solid rgba(0,0,0,0.9)
+		box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
+	to
+		background: rgba(255,255,255,1) 
 
-  56.25%
-    border: 2px solid #fff
-    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
-    
-  64.1%
-
-  75%
-
-  82.8%
-    // font-weight: 5% 
-  90%
-    
-
-
-  // box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-  //             0 2px 2px rgba(0,0,0,0.11), 
-  //             0 4px 4px rgba(0,0,0,0.11), 
-  //             0 8px 8px rgba(0,0,0,0.11), 
-  //             0 16px 16px rgba(0,0,0,0.11), 
-  //             0 32px 32px rgba(0,0,0,0.11)
 // ----- End Transition "code" ----------------------------------------------------
+
+
+
+// ----- Begin Transition "code-text" ----------------------------------------------------
+.code-text-enter-active
+	animation: code-text 2.2s
+.code-text-leave-active
+	animation: code-text 4s reverse
+
+@keyframes code-text
+	0%
+		opacity: 0
+	75%
+		opacity: 0		
+	76%
+		opacity: .1
+		transform: scale(.95)
+	100%
+		opacity: 1
+
+// ----- End Transition "code-text" ----------------------------------------------------
+
 
 
 // ----- All styles -----------------------------------------------------------
@@ -188,9 +196,12 @@ export default {
 
 		// opacity: 0
 	.code
-		-webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
-		-moz-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
 		box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
+		
+		// box-shadow: 0 1px 1px rgba(0,0,0,0.11),
+		// 0 2px 2px rgba(0,0,0,0.11),
+		// 0 4px 4px rgba(0,0,0,0.11),
+		// 0 8px 8px rgba(0,0,0,0.11)
 		border: 2px solid #fff
 	&__concept
 		padding: 5px
@@ -206,7 +217,7 @@ export default {
 		float: right
 		margin-top: 25px
 	code
-		background: #000
+		// background: #000
 		padding-bottom: 1rem
 	&__result
 		background: #8898aa

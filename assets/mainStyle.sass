@@ -86,7 +86,7 @@ pre
 	list-style: none
 	counter-reset: list
 	margin: 20px auto
-	padding: 15px
+	padding: 25px
 	overflow: hidden
 	&>a 
 		position: relative
@@ -101,10 +101,11 @@ pre
 		background: var(--link-color-bg)
 		border-radius: .25rem
 		transition: .4s ease-in-out
+		
 		&:hover, &:active
-			animation: 0.5s blurshow ease
-			filter: drop-shadow(2px 2px 2px #2F2F2F) contrast(200%)
-			transform: scale(1.02)
+			animation: 0.3s blurshow ease
+			filter: drop-shadow(2px 2px 2px #2F2F2F) saturate(150%)
+			transform: scale(1.05)
 
 		li
 			color: var(--link-color-text)

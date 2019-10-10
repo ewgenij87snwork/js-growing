@@ -25,7 +25,7 @@
 					<transition name="fade" mode="out-in">
 						<div v-show="showSyntax">
 							<p class="syntax" >{{ syntax }}</p>
-							<code><pre class="text-muted">{{ syntaxDescr }}</pre></code>
+							<code><pre class="syntaxDescr">{{ syntaxDescr }}</pre></code>
 						</div>
 					</transition>
 				</div>
@@ -84,7 +84,6 @@ export default {
 	.row
 		margin: 5px
 .functionBlock
-	background: #1D262B 
 	padding: 15px
 	padding-bottom: 0
 .answer 
@@ -104,13 +103,15 @@ export default {
 	display: flex
 	justify-content: space-between
 	padding-bottom: 5px
+.syntaxDescr
+	color: #55555D 
 .syntax
 	margin-top: 10px
-	color: #CFD0F4 
+	color: #5254A5
 .methodDescription
 	padding-left: 10px
 	padding-bottom: 5px
-	color: #EFEFEF 
+	color: #474646 
 	p
 		margin-bottom: 0
 .javascript

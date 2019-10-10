@@ -21,6 +21,9 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'Сравнение React и Vue на практическом примере',
+					link: 'https://habr.com/ru/company/ruvds/blog/419373/'
+				},{
 					name: 'Czy na pewno wiesz czym jest frontend?',
 					link: 'https://geek.justjoin.it/pewno-wiesz-czym-frontend/'
 				},{

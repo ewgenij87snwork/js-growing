@@ -24,6 +24,9 @@ export default {
 					name: 'Css to SASS with variable separation',
 					link: 'https://beautifyconverter.com/css-to-sass-converter.php'
 				},{
+					name: 'In one place methods JS',
+					link: 'http://overapi.com/javascripthttp://overapi.com/javascript'
+				},{
 					name: 'Самый адекватный онлайн-переводчик',
 					link: 'https://www.deepl.com'
 				},{
