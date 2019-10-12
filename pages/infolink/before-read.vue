@@ -22,6 +22,9 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'Переходим с jQuery на чистый JavaScript',
+					link: 'https://medium.com/@stasonmars/%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D0%B8%D0%BC-%D1%81-jquery-%D0%BD%D0%B0-%D1%87%D0%B8%D1%81%D1%82%D1%8B%D0%B8%CC%86-javascript-e2b3c2c6ab4'
+				},{
 					name: 'PWA',
 					link: 'https://habr.com/ru/post/418923/'
 				},{

@@ -7,28 +7,32 @@
 				<pre v-highlightjs="example"><code class="javascript"></code></pre>
 			</div>        
 <!-- Моя концепция "крупицы" (grain) заключается в том, что я получаю знание и интерпретирую как его использовать -->
-			<transition-height>
+			<transition-height :key="transitionKey">
 				<div class="sprout" v-show="showSprout">
-					<transition name="opa">
-						<p class="sprout__concept" v-if="sproutConcept">{{ concept }}</p>
-					</transition>
-						<div class="sprout__use" >
-							<transition name="code">
-								<div class="code" v-if="sproutCode">
-									<transition name="code-text">
-										<pre v-highlightjs="code" v-if="sproutCodeText"><code class="javascript" ></code></pre>
-									</transition>
+					<p class="sprout__concept" id="sprout-concept">
+						<span v-if="sproutConcept" 
+							v-for="charData in charsData"
+							:class="{ visible: charData.show }"
+							:key="charData.id"
+						>{{ charData.char }}</span>
+					</p>
+					<div class="sprout__use" >
+						<transition name="code">
+							<div class="code" v-if="sproutCode">
+								<transition name="code-text">
+									<pre v-highlightjs="code" v-if="sproutCodeText"><code class="javascript" ></code></pre>
+								</transition>
+							</div>
+						</transition>
+						<transition name="opa">
+							<div class="sprout__decision" v-if="sproutDecision">
+								<div class="row">
+									<base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
+									<p class="sprout__result text-center col" v-bind:id=name>Press button to see result</p>
 								</div>
-							</transition>
-<!-- 							<transition name="opa">
-								<div class="sprout__decision" v-if="sproutDecision">
-									<div class="row">
-										<base-button type="default" v-on:click="evaluation" class="sprout__result__button ">Button</base-button>
-										<p class="sprout__result text-center col" v-bind:id=name>Press button to see result</p>
-									</div>
-								</div>
-							</transition> -->
-						</div>
+							</div>
+						</transition>
+					</div>
 				</div>
 			</transition-height>
 
@@ -56,12 +60,15 @@ export default {
 	},
 	data: function() {
 		return {
+			transitionKey: 0,
 			showSprout: false,
 			sproutConcept: true,
-			sproutCode: true,
+			sproutCode: false,
 			sproutDecision: true,
-			sproutCodeText: true,
-
+			sproutCodeText: false,
+			charsData: {
+				show: false
+			}
 		}
 	},
 
@@ -75,11 +82,31 @@ export default {
 			this.sproutConcept = false;
 			this.sproutCode = false;
 			this.sproutCodeText = false;
-			setTimeout(() => {this.sproutConcept = true}, 900);
-			setTimeout(() => {this.sproutCode = true}, 900);
-			setTimeout(() => {this.sproutCodeText = true}, 900);
-			// setTimeout(() => {this.sproutDecision = true}, 900);
-			},
+			this.charsData = [];
+	
+			setTimeout(() => {
+				this.sproutConcept = true;
+				var end = this.concept.length - 50;
+				for (let i = 0; i < this.concept.length; i++) {
+					this.charsData.push({
+						id: i,
+						char: this.concept[i],
+						show: false
+					});
+					setTimeout(() => {
+						this.charsData[i].show = true;
+						if (i == end) {						
+						this.transitionKey++;
+						setTimeout(() => { this.sproutCode = true; }, 900);
+						setTimeout(() => { this.sproutCodeText = true;}, 900);
+					}
+					}, 7 * i);
+					
+				};
+			}, 900);
+
+		}
+
 	},
 	watch: {}
 }
@@ -135,6 +162,8 @@ export default {
 		box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
 	to
 		background: rgba(255,255,255,1) 
+		
+// BG - linear-gradiend -- from center to 'края' -- прозрачный/серый rgba(0,0,0,0.3)
 
 // ----- End Transition "code" ----------------------------------------------------
 
@@ -197,7 +226,7 @@ export default {
 		// opacity: 0
 	.code
 		box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75)
-		
+		margin-bottom: 20px
 		// box-shadow: 0 1px 1px rgba(0,0,0,0.11),
 		// 0 2px 2px rgba(0,0,0,0.11),
 		// 0 4px 4px rgba(0,0,0,0.11),
@@ -206,11 +235,22 @@ export default {
 	&__concept
 		padding: 5px
 		padding-top: 3rem
+		padding-bottom: 3rem
+		margin: 0
+		span
+			opacity: 0
+			transition: opacity 0.2s ease-in-out
+		span.visible
+			opacity: 1
 		
 		// opacity: .5
 	&__decision
 		background: rgba(0,0,0,.1)
 		padding: 7px
+		box-shadow: 0 1px 1px rgba(0,0,0,0.11),
+		0 2px 2px rgba(0,0,0,0.11),
+		0 4px 4px rgba(0,0,0,0.11),
+		0 8px 8px rgba(0,0,0,0.11)
 		.row
 			margin: 0 5px
 	&__button
@@ -228,4 +268,5 @@ export default {
 		margin: 5px
 		&__button
 			margin: 5px
+			
 </style>

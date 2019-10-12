@@ -100,13 +100,14 @@ pre
 		color: var(--link-color-text)
 		background: var(--link-color-bg)
 		border-radius: .25rem
-		transition: .4s ease-in-out
-		
+		will-change: transform
+		transition: .4s ease-in-out		
+		-webkit-font-smoothing: subpixel-antialiased
 		&:hover, &:active
 			animation: 0.3s blurshow ease
-			filter: drop-shadow(2px 2px 2px #2F2F2F) saturate(150%)
-			transform: scale(1.05)
-
+			filter: drop-shadow(2px 2px 2px #2F2F2F) saturate(-50%)
+			transform: scale(1.065)
+			
 		li
 			color: var(--link-color-text)
 			font-size: 1.2rem 
