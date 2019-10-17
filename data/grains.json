@@ -2,23 +2,51 @@
 {
 	"id": "1",
 	"name": "varLet",
-	"title": "Объявление через var, let",
-	"explain": "Если внутри функции переназначаем переменную объявленную через <strong>var</strong>, то она изменяется повсеместно в пределах функции, елси переменная объявлена через <strong>let</strong>, то она изменится только в пределах \"блока\"",
-	"example": "function myFunction() {\n  let myVar = \"Nick\";\n  if (true) {\n    let myVar = \"John\";\n    console.log(myVar); // \"John\"\n    // myVar имеет блочную область видимости, поэтому мы задали новое значение\n    // оно не доступно вне области и не зависит от предыдущего значения myVar\n  }\n  console.log(myVar); // команды блока if НЕ влияют на \"Nick\"\n}\nconsole.log(myVar); // выведет ReferenceError, myVar не доступна вне функции",
+	"title": "Var, let, const",
+	"explain": "Объявление через let и const имеют ограниченную блоком область видимости. Область видимости var -- в пределах функции. let не позволит объявить второй раз туже перменную. const не позволит изменить переменную. Но объявленный через const объект или массив можно извенить",
+	"example": [
+      "function myFunction() {\n  let myVar = \"Nick\";\n  if (true) {\n    let myVar = \"John\";\n    console.log(myVar); // \"John\"\n    // myVar имеет блочную область видимости, поэтому мы задали новое значение\n    // оно не доступно вне области и не зависит от предыдущего значения myVar\n  }\n  console.log(myVar); // команды блока if НЕ влияют на \"Nick\"\n}\n//console.log(myVar); // выведет ReferenceError, myVar не доступна вне функции",
+      "const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+    ],
 	"sprout": {
 		"concept": "переменную объявленную через <strong>var</strong>, то она изменяется повсеместно в пределах функции, елси переменная объявлена через <strong>let</strong>, то она изменится только в пределах \"блока\"",
-		"code": "  let myVar = \"Nick\";\n  if (true) {\n    let myVar = \"John\";\n    console.log(myVar); // \"John\"\n    // myVar имеет блочную область видимости, поэтому мы задали новое значение\n    // оно не доступно вне области и не зависит от предыдущего значения myVar\n  }\n  console.log(myVar); // команды блока if НЕ влияют на \"Nick\"\nvar result = myVar;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+		"code": "const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
 	}
 },
 {
 	"id": "2",
-	"name": "2varLet",
-	"title": "222Объявление через var, let",
-	"explain": "222Если внутри функции переназначаем переменную объявленную через <strong>var</strong>, то она изменяется повсеместно в пределах функции, елси переменная объявлена через <strong>let</strong>, то она изменится только в пределах \"блока\"",
-	"example": "function myFunction() {\n  let myVar = \"Nick\";\n  if (true) {\n    let myVar = \"John\";\n    console.log(myVar); // \"John\"\n    // myVar имеет блочную область видимости, поэтому мы задали новое значение\n    // оно не доступно вне области и не зависит от предыдущего значения myVar\n  }\n  console.log(myVar); // команды блока if НЕ влияют на \"Nick\"\n}\nconsole.log(myVar); // выведет ReferenceError, myVar не доступна вне функции",
+	"name": "arrwfnct",
+	"title": "Стрелочные функции",
+	"explain": "Краткость, объект, отсутствие аргументов, один аргумент, this.",
+	"example": "",
 	"sprout": {
 		"concept": "переменную объявленную через <strong>var</strong>, то она изменяется повсеместно в пределах функции, елси переменная объявлена через <strong>let</strong>, то она изменится только в пределах \"блока\"",
 		"code": "var myHonda = { color: 'красный', wheels: 4, engine: { cylinders: 4, size: 2.2 } };\nvar myCar = [myHonda, 2, 'в хорошем состоянии', 'приобретена в 1997'];\nvar newCar = myCar.slice(0, 2);\n\n// Изменяем цвет myHonda.\nmyHonda.color = 'багровый';"
+	}
+},
+{
+	"id": "3",
+	"name": "fnctdefparam",
+	"title": "Параметры функции по умолчанию",
+	"explain": "",
+	"example": "",
+	"sprout": {
+		"concept": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id itaque necessitatibus aut temporibus voluptas iste numquam mollitia sint harum possimus!",
+		"code": "function myFunc(x = 10) {\n  return x;\n}\nconsole.log(myFunc()) // 10 — не задано значение, поэтому значение x по умолчанию присвоено x в функции myFunc\nconsole.log(myFunc(5)) // 5 — значение задано, поэтому x=5 в функции myFunc\n\nconsole.log(myFunc(undefined)) // 10 — задано значение undefined, поэтому по умолчанию равно x\nconsole.log(myFunc(null)); // null — величина задана, продолжение ниже\nvar result = myFunc();\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	}
+},
+{
+	"id": "4",
+	"name": "arrmthdsmapfltrrdc",
+	"title": "Методы массивов map/filter/reduce",
+	"explain": "Итак, let",
+	"example": [
+      "const numbers = [0, 1, 2, 3, 4, 5, 6];",
+      "const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+    ],
+	"sprout": {
+		"concept": "переменную объявленную через <strong>var</strong>, то она изменяется повсеместно в пределах функции, елси переменная объявлена через <strong>let</strong>, то она изменится только в пределах \"блока\"",
+		"code": "const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
 	}
 }
 ]

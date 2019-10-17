@@ -11,6 +11,9 @@
 <script>
 export default {
   name: 'TransitionHeight',
+  props: {
+    'transitionKey': Number,
+  },
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;
@@ -56,7 +59,17 @@ export default {
         element.style.height = 0;
       });
     },
+    restartTransition(){
+      enter();
+      afterEnter();
+      leave();   
+    }
   },
+  watch: {
+    transitionKey: function(){
+      console.log(this.transitionKey);
+    }
+  }
 };
 </script>
 <style scoped>

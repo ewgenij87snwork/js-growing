@@ -3,11 +3,16 @@
 		<div class="grain__container">
 			<div><h2  class="grain__title text-center">{{ title }}</h2></div>
 			<div class="grain__explain">{{ explain }}</div>
-			<div class="grain__code code">
-				<pre v-highlightjs="example"><code class="javascript"></code></pre>
-			</div>        
+			<div class="grain__code__wrap" v-for="(item, index) in example" v-bind:key="index">
+				<div class="grain__code code">
+					<!-- <p>{{ item}} </p> -->
+					<pre v-highlightjs="item"><code class="javascript"></code></pre>
+					<button type="default" v-on:click="evaluationExample(item, index)">Run code</button>
+					<p v-bind:id=name+index>{{ name + index }}</p>
+				</div>  
+			</div>      
 <!-- Моя концепция "крупицы" (grain) заключается в том, что я получаю знание и интерпретирую как его использовать -->
-			<transition-height :key="transitionKey">
+			<transition-height>
 				<div class="sprout" v-show="showSprout">
 					<p class="sprout__concept" id="sprout-concept">
 						<span v-if="sproutConcept" 
@@ -34,7 +39,7 @@
 						</transition>
 					</div>
 				</div>
-			</transition-height>
+			</transition-height >
 
 			<base-button v-on:click="zapusk" class="sprout__button" size="sm" type="secondary">
 				<div v-show="!showSprout"><i class="fas fa-double-down"></i> Show</div>
@@ -45,10 +50,13 @@
 </template>
 
 <script>
+// import smoothReflow from 'vue-smooth-reflow'
 export default {
 	name: 'grain',
 	components: {
 		'transition-height': () => import('@/components/transition-height'),
+		// 'smoothReflow': () => import('@/components/smoothReflow'),
+		// smoothReflow
 	},
 	props: {
 		name: '',
@@ -58,9 +66,11 @@ export default {
 		concept: '',
 		code: '',
 	},
+	// mixins: [smoothReflow],
 	data: function() {
 		return {
 			transitionKey: 0,
+			run_trigger: false,
 			showSprout: false,
 			sproutConcept: true,
 			sproutCode: false,
@@ -71,8 +81,25 @@ export default {
 			}
 		}
 	},
-
+	mounted(){
+		// this.$smoothReflow(
+		// {
+		// 	property: ['height'],
+		// 	transition: 'height 1.25s ease-in-out'
+		// })
+	},
 	methods: {
+		evaluationExample: function(item, index) { 
+			var k = eval(item);
+			console.log(index);
+			document.getElementById(this.name+index).textContent =k;
+		},
+		// evaluationExample: (item, index) => { 
+		// 	var k = eval(item);
+		// 	console.log(index);
+		// 	document.getElementById(name+example.index).textContent =k;
+		// },
+		
 		evaluation: function() {
 			var k = eval(this.code);
 			document.getElementById(this.name).textContent =k;
@@ -86,7 +113,8 @@ export default {
 	
 			setTimeout(() => {
 				this.sproutConcept = true;
-				var end = this.concept.length - 50;
+				this.run_trigger != this.run_trigger;
+				var end = this.concept.length - 100;
 				for (let i = 0; i < this.concept.length; i++) {
 					this.charsData.push({
 						id: i,
@@ -95,12 +123,14 @@ export default {
 					});
 					setTimeout(() => {
 						this.charsData[i].show = true;
-						if (i == end) {						
-						this.transitionKey++;
-						setTimeout(() => { this.sproutCode = true; }, 900);
-						setTimeout(() => { this.sproutCodeText = true;}, 900);
+						if (i == end) {
+							// Сначала нижняя граница родителя плавно опускается под размер этого блока-текста-concept. Перед тем как появляются следующий блоки -- граница родителя "прыгает" вниз, а не плавно опускается. Вроде как чтобы происходил перезапуск transition нужно задать :key и менять его. Мой компонент-transition-height должен сначала посчитать высоту, а затем опускаться "до неё". Но блядь не реагирует ни на ключ...
+							// this.run_trigger != this.run_trigger; ... Как эту злоебучую высоту побороть
+							this.transitionKey++;
+							setTimeout(() => { this.sproutCode = true;}, 900);
+							setTimeout(() => { this.sproutCodeText = true;}, 900);
 					}
-					}, 7 * i);
+					}, 1 * i);
 					
 				};
 			}, 900);
@@ -119,7 +149,7 @@ export default {
 
 
 .opa-enter-active
-	animation: opa .5s
+	animation: opa .35s
 
 .opa-leave-active
 	animation: opa .45s reverse
@@ -140,7 +170,7 @@ export default {
 
 // ----- Transition "code" --------------------------------------------------------
 .code-enter-active
-	animation: code 2.5s
+	animation: code .55s
 .code-leave-active
 	animation: opa .25s reverse
 	
@@ -171,7 +201,7 @@ export default {
 
 // ----- Begin Transition "code-text" ----------------------------------------------------
 .code-text-enter-active
-	animation: code-text 2.5s
+	animation: code-text .75s
 .code-text-leave-active
 	animation: code-text 4s reverse
 
