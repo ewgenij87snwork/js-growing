@@ -37,16 +37,67 @@
 },
 {
 	"id": "4",
+	"name": "dstrctrobjarrs",
+	"title": "Деструктурирование объектов и массивов",
+	"explain": "",
+	"example": ["const person = {\n  firstName: \"Nick\",\n  lastName: \"Anderson\",\n  age: 35,\n  sex: \"M\"\n};\n\nconst { firstName: first, age, city = \"Paris\" } = person; // так выглядит деструктурирование одной строкой\n\nvar result = first;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "5",
 	"name": "arrmthdsmapfltrrdc",
 	"title": "Методы массивов map/filter/reduce",
 	"explain": "Итак, let",
 	"example": [
-      "const numbers = [0, 1, 2, 3, 4, 5, 6];",
-      "const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
-    ],
+		"const numbers = [0, 1, 2, 3, 4, 5, 6];",
+		"const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
 	"sprout": {
 		"concept": "переменную объявленную через <strong>var</strong>, то она изменяется повсеместно в пределах функции, елси переменная объявлена через <strong>let</strong>, то она изменится только в пределах \"блока\"",
 		"code": "const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	}
+},
+{
+	"id": "6",
+	"name": "sprdoprtr",
+	"title": "Оператор spread(…)",
+	"explain": "чтобы элементы итерации (например массива) можно было использовать в качестве нескольких элементов в коде.",
+	"example": [
+		"const arr1 = [\"a\", \"b\", \"c\"];\nconst arr2 = [...arr1, \"d\", \"e\", \"f\"]; var result = arr2 ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);",
+		"const myObj = { x: 1, y: 2, a: 3, b: 4 };\nconst { x, y, ...z } = myObj; // деструктурируем объект\nconsole.log(x); // 1\nconsole.log(y); // 2\nconsole.log(z); // { a: 3, b: 4 }\n\n// z — оставшаяся часть деструктурированного объекта myObj после вычитания свойств x и y\n\nconst n = { x, y, ...z }; \nvar result = n;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "7",
+	"name": "objprptshrthnd",
+	"title": "Сокращение свойств объекта",
+	"explain": "Переменная для свойств объекта",
+	"example": [
+		"const x = 10;\nconst y = 20;\n\nconst myObj = {\n  x,\n  y\n};\nvar result = myObj.y;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "8",
+	"name": "prmssobj",
+	"title": "Объекты «промисы»",
+	"explain": "",
+	"example": [
+		"new Promise(function(resolve, reject) {\n  console.log('A');\n  resolve();\n}).then(function() {\n  console.log('B');\n});\nconsole.log('C'); //Ответ: A, C, затем B.\n var result = '///' ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
 	}
 }
 ]
