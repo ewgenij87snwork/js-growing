@@ -8,7 +8,7 @@
 					<!-- <p>{{ item}} </p> -->
 					<pre v-highlightjs="item"><code class="javascript"></code></pre>
 					<button type="default" v-on:click="evaluationExample(item, index)">Run code</button>
-					<p v-bind:id=name+index>{{ name + index }}</p>
+					<p v-bind:id=index+name>{{ index + name }}</p>
 				</div>  
 			</div>      
 <!-- Моя концепция "крупицы" (grain) заключается в том, что я получаю знание и интерпретирую как его использовать -->
@@ -51,6 +51,9 @@
 
 <script>
 // import smoothReflow from 'vue-smooth-reflow'
+//grains.json импортирую чтобы сделать фукнцию reduce 
+import grains from "@/data/grains.json"
+
 export default {
 	name: 'grain',
 	components: {
@@ -69,6 +72,8 @@ export default {
 	// mixins: [smoothReflow],
 	data: function() {
 		return {
+			grains: grains,
+			bla: 'blaaa',
 			transitionKey: 0,
 			run_trigger: false,
 			showSprout: false,
@@ -90,19 +95,12 @@ export default {
 	},
 	methods: {
 		evaluationExample: function(item, index) { 
-			var k = eval(item);
-			console.log(index);
-			document.getElementById(this.name+index).textContent =k;
+			var exampleCode = eval(item);
+			document.getElementById(index+this.name).textContent = exampleCode;
 		},
-		// evaluationExample: (item, index) => { 
-		// 	var k = eval(item);
-		// 	console.log(index);
-		// 	document.getElementById(name+example.index).textContent =k;
-		// },
-		
 		evaluation: function() {
 			var k = eval(this.code);
-			document.getElementById(this.name).textContent =k;
+			// document.getElementById(this.name).textContent = k;
 		},
 		zapusk: function() {
 			this.showSprout = !this.showSprout;
@@ -114,7 +112,7 @@ export default {
 			setTimeout(() => {
 				this.sproutConcept = true;
 				this.run_trigger != this.run_trigger;
-				var end = this.concept.length - 100;
+				var end = this.concept.length - 30;
 				for (let i = 0; i < this.concept.length; i++) {
 					this.charsData.push({
 						id: i,
@@ -130,7 +128,7 @@ export default {
 							setTimeout(() => { this.sproutCode = true;}, 900);
 							setTimeout(() => { this.sproutCodeText = true;}, 900);
 					}
-					}, 1 * i);
+					}, 17 * i);
 					
 				};
 			}, 900);
@@ -296,6 +294,7 @@ export default {
 		letter-spacing: 2px
 		border-radius: 0.25rem
 		margin: 5px
+		overflow-wrap: break-word
 		&__button
 			margin: 5px
 			

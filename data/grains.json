@@ -50,21 +50,22 @@
 	"id": "5",
 	"name": "arrmthdsmapfltrrdc",
 	"title": "Методы массивов map/filter/reduce",
-	"explain": "Итак, let",
+	"explain": "Цель метода — сократить переменные до одной после итерации.",
 	"example": [
-		"const numbers = [0, 1, 2, 3, 4, 5, 6];",
-		"const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+		"const numbers = [0, 1, 2, 3, 4, 5, 6];\nconst sum = numbers.reduce(\n  function(acc, n) {\n    return acc + n;\n  }, 0\n);\nvar result =sum;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);",
+		"// friends - список из объектов(друзей) \n// где поле \"books\" - список любимых книг друга \nvar friends = [ \n{ name: \"Anna\", books: [\"Bible\", \"Harry Potter\"], age: 21 }, \n{ name: \"Bob\", books: [\"War and peace\", \"Romeo and Juliet\"], age: 26 },\n{ name: \"Alice\", books: [\"The Lord of the Rings\", \"The Shining\"], age: 18 }\n]\n\n// allbooks - список, который будет содержать все книги друзей + \n// дополнительный список указанный в initialValue\nvar allbooks = friends.reduce(function(prev, curr) {\n  return [...prev, ...curr.books];\n}, [\"Alphabet\"]);\n\nvar result = allbooks;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
 	],
 	"sprout": {
-		"concept": "переменную объявленную через <strong>var</strong>, то она изменяется повсеместно в пределах функции, елси переменная объявлена через <strong>let</strong>, то она изменится только в пределах \"блока\"",
-		"code": "const person = {\n  name: 'Nick'\n};\nperson.name = 'John' // будет работать, поскольку значение изменили, а не присвоили заново\nconsole.log(person.name) // \"John\"\n\nperson.name = 'Johnina'\n\nperson.name = 'Johninininina'\nvar result = person.name ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+		"concept": "Через reduce() можно разворачивать массив массивов. Но здесь я просто соеденил все имена крупиц. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae quaerat provident, totam. Dolorum magnam, provident rerum veniam, voluptate similique nam enim iusto iste nostrum! Quibusdam, ut, voluptatibus. Modi, nostrum, doloribus.",
+
+		"code": "var allName = this.grains.reduce(function(prev, curr) {\n  return [...prev,curr.name];\n}, [\"Alphabet\"]); \n\nvar result = allName; \n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
 	}
 },
 {
 	"id": "6",
 	"name": "sprdoprtr",
 	"title": "Оператор spread(…)",
-	"explain": "чтобы элементы итерации (например массива) можно было использовать в качестве нескольких элементов в коде.",
+	"explain": "Расширение свойств объекта. Оставшиеся параметры функции. Объектные литералы.",
 	"example": [
 		"const arr1 = [\"a\", \"b\", \"c\"];\nconst arr2 = [...arr1, \"d\", \"e\", \"f\"]; var result = arr2 ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);",
 		"const myObj = { x: 1, y: 2, a: 3, b: 4 };\nconst { x, y, ...z } = myObj; // деструктурируем объект\nconsole.log(x); // 1\nconsole.log(y); // 2\nconsole.log(z); // { a: 3, b: 4 }\n\n// z — оставшаяся часть деструктурированного объекта myObj после вычитания свойств x и y\n\nconst n = { x, y, ...z }; \nvar result = n;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
@@ -94,6 +95,126 @@
 	"explain": "",
 	"example": [
 		"new Promise(function(resolve, reject) {\n  console.log('A');\n  resolve();\n}).then(function() {\n  console.log('B');\n});\nconsole.log('C'); //Ответ: A, C, затем B.\n var result = '///' ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "9",
+	"name": "tmpltltrls",
+	"title": "Шаблонные литералы",
+	"explain": "это синтаксис, допускающий использование выражений JavaScript внутри строк.",
+	"example": [
+		"const name = \"Nick\";\n// Hello Nick, the following expression is equal to four: 4\n\nvar result =  `Hello ${ this.bla }, the following expression is equal to four : ${2+2}`;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "10",
+	"name": "tggdtmpltltrls",
+	"title": "Теговые шаблоны",
+	"explain": "Являются расширенной формой шаблонных литералов и позволяют разбирать их с помощью функции. При вызове функции первый аргумент содержит массив строковых значений между интерполированными значениями. Чтобы уместить их все, используйте оператор spread (...).",
+	"example": [
+		"function highlight(strings, ...values) {\n  const interpolation = strings.reduce((prev, current) => {\n    return prev + current + (values.length ? \"\" + values.shift() + \"\" : \"\");\n  }, \"\");\n\n  return interpolation;\n}\n\nconst condiment = \"jam\";\nconst bla = \"------uuuuuiiiii\";\nconst meal = \"toast\";\n\nvar result = highlight`I like ${condiment} on ${meal}.${bla}`;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);",
+		"function comma(strings, ...values) {\n  return strings.reduce((prev, next) => {\n    let value = values.shift() || [];\n    value = value.join(\", \");\n    return prev + next + value;\n  }, \"\");\n}\n\nconst snacks = ['apples', 'bananas', 'cherries'];\nvar result = comma`I like ${snacks} to snack on.`;;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "Я не совсем понимаю, почему в функции 2 аргемента: strings и ...values. Мы как бы говорим: array[], значения array[...] ",
+		"code": ""
+	}
+},
+{
+	"id": "11",
+	"name": "imprtexprt",
+	"title": "Инструкции импорта и экспорта",
+	"explain": "Именованные импорт/экспорт. Импорт/экспорт по умолчанию.",
+	"example": [
+		"// sum.js\nexport default function sum(x, y) {\n  return x + y;\n}\n// -------------\n\n// myFile.js\nimport sum from './sum.js';\nconst result = sum(1, 2);\nconsole.log(result) // 3\n\n // Don't press \"Run code\" - here no one *.js files!"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "12",
+	"name": "cls",
+	"title": "Классы",
+	"explain": "Попробуйте посмотреть иначе: прочитайте о прототипах и их поведении в JavaScript.",
+	"example": [
+		"class Person {\n  constructor(name, age) {\n    this.name = name;\n    this.age = age;\n  }\n\n  stringSentence() {\n    return `Привет, я ${this.name} и мне ${this.age}`;\n  }\n}\n\nconst myPerson = new Person(\"Manu\", 23);\nconsole.log(myPerson.age) // 23\n\nvar result = myPerson.stringSentence();\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "13",
+	"name": "extendsuperkwrds",
+	"title": "Ключевые слова extends и super",
+	"explain": "Попробуйте посмотреть иначе: прочитайте о прототипах и их поведении в JavaScript.",
+	"example": [
+		"class Polygon {\n  constructor(height, width) {\n    this.name = 'Polygon';\n    this.height = height;\n    this.width = width;\n  }\n\n  getHelloPhrase() {\n    return `Привет, я — ${this.name}`;\n  }\n}\n\nclass Square extends Polygon {\n  constructor(length) {\n    // здесь вызван конструктор родительского класса со значением lengths\n    // использованным для значений width и height класса Polygon \n    super(length, length);\n    // в производных классах super() необходимо вызывать перед this\n    // иначе будет выведено сообщение об ошибке\n    this.name = 'Square';\n    this.length = length;\n  }\n\n  getCustomHelloPhrase() {\n    const polygonPhrase = super.getHelloPhrase(); // доступ к родительскому методу с синтаксисом super.X()\n    return `${polygonPhrase} with a length of ${this.length}`;\n  }\n\n  get area() {\n    return this.height * this.width;\n  }\n}\n\nconst mySquare = new Square(10);\nconsole.log(mySquare.area) // 100\nconsole.log(mySquare.getHelloPhrase()) // «Привет, я Square»: Square — наследник класса Polygon с доступом к его методам\nconsole.log(mySquare.getCustomHelloPhrase()) // Привет, я Square с длиной 10\n\nvar result = mySquare.getCustomHelloPhrase();\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "14",
+	"name": "asyncawait",
+	"title": "Функция async и оператор await",
+	"explain": "Для написания асинхронного кода в JavaScript появился синтаксис async/await. Цель нововведения — упростить использование промисов и расширить рамки действий с ними. Для лучшего понимания этого синтаксиса, рекомендуем сначала ознакомиться с промисами. await может использоваться только внутри асинхронной функции.",
+	"example": [
+		"async function getGithubUser(username) { // ключевое слово async позволяет использовать await в функции, которая возвращает промис\n  const response = await fetch(`https://api.github.com/users/${username}`); // выполнение приостановлено до момента получения ответа от переданного промиса\n  return response.json();\n}\n\ngetGithubUser('mbeaudru')\n  .then(user => console.log(user)) // ответ пользователя, проходящего авторизацию: синтаксис await невозможно использовать, поскольку код не является асинхронной функцией\n  .catch(err => console.log(err)); // в случае ошибки асинхронной функции, мы увидим её\n\nvar result = getGithubUser('mbeaudru') ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);",
+		"async function getUser() { // возвращённый промис будет отклонён!\n  throw \"User not found !\";\n}\n\nasync function getAvatarByUsername(userId) {\n  const user = await getUser(userId);\n  return user.avatar;\n}\n\nasync function getUserAvatar(username) {\n  var avatar = await getAvatarByUsername(username);\n  return { username, avatar };\n}\n\ngetUserAvatar('mbeaudru')\n  .then(res => console.log(res))\n  .catch(err => console.log(err)); // \"User not found !\"\n\nvar result =111 ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "15",
+	"name": "amrphcatmrph",
+	"title": "Анаморфизмы и катаморфизмы",
+	"explain": "Анаморфизмы: функции, с помощью которых объекты разворачиваются в более сложные структуры, содержащие объекты того же типа. Катаморфизмы: сворачивают объекты с более сложной структурой в простые. ",
+	"example": [
+		"function downToOne(n) {\n  const list = [];\n\n  for (let i = n; i > 0; --i) {\n    list.push(i);\n  }\n\n  return list;\n}\n\n\nvar result = downToOne(5) ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);",
+		"function downToOne(n) {\n  const list = [];\n\n  for (let i = n; i > 0; --i) {\n    list.push(i);\n  }\n\n  return list;\n}\n\nfunction product(list) {\n  let product = 1;\n\n  for (const n of list) {\n    product = product * n;\n  }\n\n  return product;\n}\n\nvar result = product(downToOne(5)) ;\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "16",
+	"name": "gnrtrs",
+	"title": "Генераторы",
+	"explain": " Эти функции могут приостанавливать выполнение, вернуть промежуточный результат, а затем продолжить выполнение в любой момент. Генераторы возвращают итерируемые объекты. Функция next() выполняется до ключевого слова yield, которое возвращает значение во внешний код. Либо до функции yield *, которая передаёт её другой функции-генератору.",
+	"example": [
+		"// пример yield *\nfunction * genB(i) {\n  yield i + 1;\n  yield i + 2;\n  yield i + 3;\n}\n\nfunction * genA(i) {\n  yield i;\n  yield* genB(i);\n  yield i + 10;\n}\n\nvar gen = genA(10);\n\nconsole.log(gen.next().value); \nconsole.log(gen.next().value); \nconsole.log(gen.next().value); \nconsole.log(gen.next().value); \nconsole.log(gen.next().value); \nvar result = 'in console';\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
+	],
+	"sprout": {
+		"concept": "",
+		"code": ""
+	}
+},
+{
+	"id": "17",
+	"name": "sttcmthds",
+	"title": "Статические методы",
+	"explain": "Статичные методы функции, принадлежащие объекту класса, но не доступные другим объектам того же класса. Вызов статического метода из нестатического метода производится двумя способами: с использованием названия класса, с помощью конструктора.",
+	"example": [
+		"class Repo {\n  static getName() {\n    return \"Repo name is modern-js-cheatsheet\"\n  }\n\n  useName(){\n    return Repo.getName() + ' and it contains some really important stuff'\n  }\n}\n\n// для использования статических методов нам нужно создать класс\nlet r = new Repo()\n\nvar result = r.useName() ; // название Repo — modern-js-cheatsheet и в нём содержатся важные данные\n\n\n document.getElementById(this.name).textContent = JSON.stringify(result);"
 	],
 	"sprout": {
 		"concept": "",

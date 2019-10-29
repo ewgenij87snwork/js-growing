@@ -24,6 +24,9 @@ export default {
 					name: 'Сравнение React и Vue на практическом примере',
 					link: 'https://habr.com/ru/company/ruvds/blog/419373/'
 				},{
+					name: 'How To Create A Vue.js App With The NASA API',
+					link: 'https://www.youtube.com/watch?v=GiIQce7Rx4Y'
+				},{
 					name: 'Czy na pewno wiesz czym jest frontend?',
 					link: 'https://geek.justjoin.it/pewno-wiesz-czym-frontend/'
 				},{

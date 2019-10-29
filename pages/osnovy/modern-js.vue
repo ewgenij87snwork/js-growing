@@ -35,6 +35,7 @@ export default {
 	data: function() {
 		return {
 			grains: grains,
+			friends: this.grains,
 			intro: {
 				'title': 'Modern JS',
 				'blockquote': 'Знание без практики порождает лишь страсти',

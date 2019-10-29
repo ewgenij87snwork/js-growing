@@ -22,6 +22,15 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'Нужны ли препроцессоры в 2019 году',
+					link: 'https://medium.com/@lucyhackwrench/%D0%BD%D1%83%D0%B6%D0%BD%D1%8B-%D0%BB%D0%B8-%D0%BF%D1%80%D0%B5%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D1%80%D1%8B-%D0%B2-2019-%D0%B3%D0%BE%D0%B4%D1%83-727a856d1443'
+				},{
+					name: 'Важные отличия между Sass и SCSS',
+					link: 'https://tpverstak.ru/sass-scss/'
+				},{
+					name: 'Как подступиться к fullstack-разработке сегодня, если ты проспал десять лет',
+					link: 'https://habr.com/ru/post/427181/'
+				},{
 					name: 'SDLC — жизненный цикл разработки',
 					link: 'https://qa-guide.ru/forums/topic/sdlc/'
 				},{
