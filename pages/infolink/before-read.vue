@@ -22,6 +22,12 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: '9 Projects You Can Do to Become a Front-End Master in 2020',
+					link: 'https://medium.com/better-programming/9-projects-you-can-do-to-become-a-front-end-master-in-2020-97577110cca1'
+				},{
+					name: 'Building a Relay-compatible GraphQL Server',
+					link: 'https://jobs.zalando.com/tech/blog/building-a-relay-compatible-graphql-server/?gh_src=4n3gxh1'
+				},{
 					name: 'Нужны ли препроцессоры в 2019 году',
 					link: 'https://medium.com/@lucyhackwrench/%D0%BD%D1%83%D0%B6%D0%BD%D1%8B-%D0%BB%D0%B8-%D0%BF%D1%80%D0%B5%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D1%80%D1%8B-%D0%B2-2019-%D0%B3%D0%BE%D0%B4%D1%83-727a856d1443'
 				},{

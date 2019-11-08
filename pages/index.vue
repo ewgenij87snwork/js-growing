@@ -1,4 +1,5 @@
-https://habr.com/ru/company/ruvds/blog/419373/<template>
+
+<template>
   <section class="container">
     <div>
       <p class="lead">I maked this website for study JavaScript, VueJS and something other from Front-End Develope. Here I saving some study information and realize some practice.</p>
