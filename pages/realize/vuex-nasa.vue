@@ -1,12 +1,14 @@
 <template>
 	<div>
-		
+		<search-form/>
 	</div>
 </template>
 <script>
-import { mapGetters, mapActions } from "vuex";
 export default {
 	name: 'vuex-nasa',
+	components: {
+		'search-form': () => import('@/components/search-form')
+	}
 }
 
 </script>
