@@ -22,6 +22,9 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'Как делать сайты в 2019 году',
+					link: 'https://habr.com/ru/post/456912/'
+				},{
 					name: '9 Projects You Can Do to Become a Front-End Master in 2020',
 					link: 'https://medium.com/better-programming/9-projects-you-can-do-to-become-a-front-end-master-in-2020-97577110cca1'
 				},{

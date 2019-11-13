@@ -25,10 +25,14 @@ export default {
 	},
 	methods: {
 	      getResult(query) {
-	        axios.get('https://images-api.nasa.gov/search?q=' + query + '&media_type=image').then( response => {
-	            console.log("1111" + this.query);
+	        axios.get('https://images-api.nasa.gov/search?q=' + query + '&media_type=image')
+	        .then( response => {
+	        	console.log(response.config)
 	            this.results = response.data.collection.items;
-	        });
+	        })
+	        .catch(function (error) {
+	            console.log(error.toJSON());
+	          });;
 	      }
 	  }
 }
