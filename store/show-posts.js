@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const state = () => ({
 	posts: []
 });
@@ -27,10 +29,11 @@ export const mutations = {
 
 export const actions = {
 	async fetchPosts({ commit, getters, dispatch }, limit = 3) {
-	  const res = await fetch(
+	  const res = await axios.get(
 	    'https://jsonplaceholder.typicode.com/posts?_limit=' + limit
 	  )
-	  const posts = await res.json()
+	  const posts = res.data
+	  console.log(posts)
 
 	  dispatch('sayHello')
 

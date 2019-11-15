@@ -18,7 +18,11 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  plugins: ['@/plugins/vue-highlightjs', '@/plugins/argon'],
+  plugins: [
+    { src: "@/plugins/swiper.js",  ssr: false },
+    '@/plugins/argon',
+    '@/plugins/vue-highlightjs'
+    ],
   /*
    ** Global CSS
    */
@@ -26,6 +30,9 @@ module.exports = {
   styleResources: {
       sass: [
           '@/assets/mainStyle.sass'
+      ],
+      css: [
+          "swiper/dist/css/swiper.css"
       ]
   },
   /*

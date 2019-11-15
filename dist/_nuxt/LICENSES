@@ -29,6 +29,13 @@
 	*/
 
 /*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+/*!
  * vue2-transitions v0.3.0
  * (c) 2019-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
@@ -48,9 +55,8 @@
  * Released under the MIT License.
  */
 
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
