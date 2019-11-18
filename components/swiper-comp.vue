@@ -1,72 +1,116 @@
 <template>
-  <!-- You can find this swiper instance object in current component by the "mySwiper"  -->
-  <div v-swiper:mySwiper="swiperOption">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="(banner,index) in srcResult" :key="index">
-        <img :src="banner">
+    <div class="swiper" v-swiper:mySwiper="swiperOptions">
+      <div class="swiper-container gallery-top" v-swiper:mySwiper="galleryTop">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item, index) in srcResult" :key="index">
+              <img :src="item">
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+      </div>
+
+      <div class="swiper-container gallery-thumbs" v-swiper:mySwiper="galleryThumbs">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item, index) in srcResult" :key="index">
+              <img :src="item">
+          </div>
+        </div>
       </div>
     </div>
-    <div class="swiper-pagination swiper-pagination-bullets"></div>
-  </div>
 </template>
 
 <script>
-  export default {
-  	name: 'swiper-comp',
-  	props: ['srcResult'],
-  	beforeMount() {
-  	},
-    data () {
-      return {
-        banners: [],
-        swiperOption: {
-                slidesPerView: 1000,
-                loop: true,
-                navigation: {
-                  nextEl: '.swiper-button-next',
-                  prevEl: '.swiper-button-prev'
-                }
-              }
+export default {
+  props: ['srcResult'],
+  computed: {
+      swiper() {
+          return this.$refs.mySwiper.swiper
       }
-    },
-    mounted() {
-    	// this.banners.push(this.results)
+  },
+  data() {
+    return {
+      galleryThumbs: {
+        spaceBetween: 10,
+        slidesPerView: 5,
+        loop: true,
+        freeMode: true,
+        loopedSlides: 5, //looped slides should be the same
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+      },
+      galleryTop: {
+        spaceBetween: 10,
+        loop:true,
+        loopedSlides: 5, //looped slides should be the same
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+          swiper: this.galleryThumbs,
+        }
+      },
+
+      swiperOptions: {
+        loop: true,
+           slidesPerView: 'auto',
+           centeredSlides: true,
+           spaceBetween: 30,
+           pagination: {
+             el: '.swiper-pagination',
+             dynamicBullets: true
+           },
+      }
     }
-    // mounted() {
-    //   console.log('app init', this)
-    //   setTimeout(() => {
-    //     this.banners.push('/5.jpg')
-    //     console.log('banners update')
-    //   }, 3000)
-    //   console.log(
-    //     'This is current swiper instance object', this.mySwiper, 
-    //     'I will slideTo banners 3')
-    //    this.mySwiper.slideTo(3)
-    // }
   }
+}
 </script>
 
-
-<style lang="scss" scoped>
-img {
-	max-width: 200px; 
+<style>
+html, body {
+  position: relative;
+  height: 100%;
 }
-  .my-swiper {
-    height: 300px;
-    width: 100%;
-    .swiper-slide {
-      text-align: center;
-      font-size: 38px;
-      font-weight: 700;
-      background-color: #eee;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .swiper-pagination {
-      > .swiper-pagination-bullet {
-        background-color: red;
-      }
-    }
-  }
+body {
+  /*background: #000;*/
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color:#000;
+  margin: 0;
+  padding: 0;
+}
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gallery-top {
+  height: 80%;
+  width: 100%;
+}
+.gallery-thumbs {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+.gallery-thumbs .swiper-slide {
+  height: 100%;
+  opacity: 0.4;
+}
+.gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
 </style>

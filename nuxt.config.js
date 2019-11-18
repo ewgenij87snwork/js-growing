@@ -26,14 +26,15 @@ module.exports = {
   /*
    ** Global CSS
    */
+  css: [
+      "swiper/dist/css/swiper.css"
+  ],
   modules: ['@nuxtjs/style-resources'],
   styleResources: {
       sass: [
           '@/assets/mainStyle.sass'
-      ],
-      css: [
-          "swiper/dist/css/swiper.css"
       ]
+      
   },
   /*
   ** Customize the progress bar color

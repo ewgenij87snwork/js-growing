@@ -21,6 +21,9 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'Надо разобраться как этой базой с Вью пользоваться',
+					link: 'https://nicedoc.io/vuejs/awesome-vue#user-content-community'
+				},{
 					name: 'Css to SASS with variable separation',
 					link: 'https://beautifyconverter.com/css-to-sass-converter.php'
 				},{

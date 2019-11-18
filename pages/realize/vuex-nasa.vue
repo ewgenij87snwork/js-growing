@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<swiper-comp/>
 		<search-form/>
 	</div>
 </template>
