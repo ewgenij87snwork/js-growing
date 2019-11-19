@@ -1,6 +1,9 @@
 <template>
 	<div>
 		<div class="search">
+			<div class="begin">
+				<h3>Here search-form for sierching in image in the NASA API. For testing, please write word (such as 'sun', 'moon', 'fly'...) </h3>
+			</div>
 			<form v-on:submit.prevent="getResult(query)">
 				<input type="text" placeholder="Please, type in your search" v-model="query">
 			</form>

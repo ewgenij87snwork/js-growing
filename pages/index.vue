@@ -4,15 +4,19 @@
     <div>
       <p class="lead">I maked this website for study JavaScript, VueJS and something other from Front-End Develope. Here I saving some study information and realize some practice.</p>
       <hr>
-      <p class="lead"> Here I used NuxtJS, Argon, Highlightjs. <strong><b>NuxtJS</b></strong> -- becouse <cite>"is a higher-level framework built on top of the Vue ecosystem which provides an extremely streamlined development experience for writing universal Vue applications."</cite>. <strong><b>Argon</b></strong> - this is design system based on Bootstrap 4. I decided to try "Argon" because a month before the creation of this "conspectus", I saw the order on the freelance to make the site on this template. <strong><b>HighlightJS</b></strong> -  is a syntax highlighter written in JavaScript. It works in the browser as well as on the server. It works with pretty much any markup, doesn’t depend on any framework, and has automatic language detection. </p>
+      <p class="lead"> Here I used NuxtJS, Argon, Highlightjs. <b>NuxtJS</b> -- becouse <cite>"is a higher-level framework built on top of the Vue ecosystem which provides an extremely streamlined development experience for writing universal Vue applications."</cite>. <b>Argon</b> - this is design system based on Bootstrap 4. I decided to try "Argon" because a month before the creation of this "conspectus", I saw the order on the freelance to make the site on this template. <strong>HighlightJS</strong> -  is a syntax highlighter written in JavaScript. It works in the browser as well as on the server. It works with pretty much any markup, doesn’t depend on any framework, and has automatic language detection. </p>
       <hr>
 
       <!-- Page creation sequence -->
       <h2 class="text-default text-uppercase text-center">Page creation sequence </h2>
-      <br>
+      <br> 
       <div class="pages" v-for="item in pages" v-bind:key="item.id">
-        <a class="hvr-underline-from-left" :href="item.link"><h3 class="text-muted"><i class="fa fa-angle-double-right " data-fa-transform="shrink-6" aria-hidden="true"></i> {{ item.name }}</h3></a>
-        <p class="lead" v-html="item.text"></p>
+        <a class="hvr-underline-from-left" :href="item.link">
+          <h3 class="text-muted">
+            <i class="fa fa-angle-double-right " data-fa-transform="shrink-6" aria-hidden="true"></i> {{ item.name }}
+          </h3>
+        </a>
+        <p class="lead" > {{ item.text }}</p>
       </div>
       	
     </div>
@@ -52,11 +56,6 @@ export default {
         link: '/osnovy/modern-js',
         name: 'Modern JS',
         text: 'This is where I started making the "Grain" component. And I spent a lot of time studying the sequence of transitions.<br><strong><b>The concept!</b></strong> There is a "parent" block -- a specific topic (e.g., arrow functions, promises). It has a title, text, a block of code, which explain how this topic work, and a "show" button.  "Children" -- is how I understood the topic. I.e. here my description, my example code and the result of this code implementation.<p class="lead"><strong><b>Transition concept!</b></strong> By clicking on the "Show" button, the parent smoothly drops the bottom border under the "children". I\'ve found a wonderful component in the wilderness Internet, who\'s a good at this task. But there was a problem with children\'s transitions. The "parent" transition should be calculated taking heights of the "children". Which means, that at the moment when the "show" button is pressed, "children" should be in the position "v-if=true". I made a function that was launched by clicking on this button "show". It switch the "children" into "v-if=false", and after half the time transition "parent", it returned back into "v-if=true". So, before finished animation drops the bottom border in parent -- "children" changed v-if in true-false-true, which started their "transition" (Probably, better one time see code this function, which called "zapusk")</p><p class="lead">There are 3 transitions for "children": to the <strong><b>text-description, to code-example, to result-code</b></strong>.  For <strong><b>text-description</b></strong>: text just become from left. For <strong><b>code-example</b></strong> the sequence of animation was built: opacity, border, box-shadow, background. Unfortunately, I had to stop at this stage of creation...</p>'
-      },{
-        id: '',
-        link: '',
-        name: '',
-        text: ''
       }
       ]
     }
