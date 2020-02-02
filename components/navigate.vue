@@ -13,8 +13,15 @@
 
 			<ul class="navbar-nav ml-lg-auto">
 				<base-dropdown tag="li" title="NOW Realize">
+					<li><a class="dropdown-item" href="/realize/js-practice-slider">js-practice-slider</a></li>
 					<li><a class="dropdown-item" href="/realize/vuex-nasa">vuex-NASA-slider</a></li>
 					<li><a class="dropdown-item" href="/realize/show-posts-page">Вывод постов из json.placeholder</a></li>
+				</base-dropdown>
+
+				<base-dropdown tag="li" title="Steven Hancock JS">
+					<li><a class="dropdown-item" href="/hancock/getting-started/4-26-join-exercise">4-26-join-exercise</a></li>
+					<li><a class="dropdown-item" href="/osnovy/regexp-primary">RegExp на примерах 33</a></li>
+					<li><a class="dropdown-item" href="/osnovy/modern-js">Modern JS</a></li>
 				</base-dropdown>
 
 				<base-dropdown tag="li" title="Main JavaScript">

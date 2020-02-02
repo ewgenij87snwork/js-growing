@@ -22,6 +22,9 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'Front-end Developer Handbook 2019',
+					link: 'https://frontendmasters.com/books/front-end-handbook/2019/'
+				},{
 					name: 'Как делать сайты в 2019 году',
 					link: 'https://habr.com/ru/post/456912/'
 				},{

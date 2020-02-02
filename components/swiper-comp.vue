@@ -1,6 +1,7 @@
 <template>
     <div class="swiper" v-swiper:mySwiper="swiperOptions">
-      <div class="swiper-container gallery-top" v-swiper:mySwiper="galleryTop">
+       <!-- v-swiper:mySwiper="galleryTop" -->
+      <div class="swiper-container gallery-top">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(item, index) in srcResult" :key="index">
               <img :src="item">
@@ -10,8 +11,8 @@
         <div class="swiper-button-next swiper-button-white"></div>
         <div class="swiper-button-prev swiper-button-white"></div>
       </div>
-
-      <div class="swiper-container gallery-thumbs" v-swiper:mySwiper="galleryThumbs">
+ <!-- v-swiper:mySwiper="galleryThumbs" -->
+      <div class="swiper-container-thumbs">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(item, index) in srcResult" :key="index">
               <img :src="item">
@@ -25,46 +26,36 @@
 export default {
   props: ['srcResult'],
   computed: {
-      swiper() {
-          return this.$refs.mySwiper.swiper
-      }
+      // swiper() {
+      //     return this.$refs.mySwiper.swiper
+      // }
   },
   data() {
     return {
-      galleryThumbs: {
-        spaceBetween: 10,
-        slidesPerView: 5,
-        loop: true,
-        freeMode: true,
-        loopedSlides: 5, //looped slides should be the same
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-      },
-      galleryTop: {
-        spaceBetween: 10,
-        loop:true,
-        loopedSlides: 5, //looped slides should be the same
-        navigation: {
+      
+
+
+    swiperOptions: {
+      loop: true,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 30,
+      navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-        thumbs: {
-          swiper: this.galleryThumbs,
+      thumbs: {
+        swiper: {
+          el: '.swiper-container-thumbs',
+          slidesPerView: 5,
         }
       },
-
-      swiperOptions: {
-        loop: true,
-           slidesPerView: 'auto',
-           centeredSlides: true,
-           spaceBetween: 30,
-           pagination: {
-             el: '.swiper-pagination',
-             dynamicBullets: true
-           },
       }
     }
-  }
+  },
+   methods: {
+
+      }
 }
 </script>
 
