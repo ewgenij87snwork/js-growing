@@ -44,6 +44,15 @@ export default {
 				},{
 					name: 'Проверка RegExp',
 					link: 'https://regexr.com/'
+				},{
+					name: 'Топ с Хабра',
+					link: 'https://habr.com/ru/top/'
+				},{
+					name: 'Css-tricks',
+					link: 'https://css-tricks.com/'
+				},{
+					name: 'CSS Wizardry Posts Archive',
+					link: 'https://csswizardry.com/archive/'
 				},
 			]
 		}

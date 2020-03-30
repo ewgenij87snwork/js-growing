@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[24],{489:function(t,e,n){"use strict";n.r(e);var r={name:"forests-geo",data:function(){return{}}},o=n(2),component=Object(o.a)(r,(function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"hero"})}),[],!1,null,null,null);e.default=component.exports}}]);
