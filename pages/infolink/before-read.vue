@@ -22,6 +22,12 @@ export default {
 		return {
 			infolinks: [
 				{
+					name: 'Хочу реализовать такой газетный дизайн!',
+					link: 'https://www.retail-systems.com/rs/index.php'
+				},{
+					name: 'Карта для фронтендера',
+					link: 'https://github.com/zualex/devmap'
+				},{
 					name: 'Front-end Developer Handbook 2019',
 					link: 'https://frontendmasters.com/books/front-end-handbook/2019/'
 				},{
