@@ -2,9 +2,11 @@
 
 > Nuxt.js project
 
+https://frontendworkbook.herokuapp.com/
+
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install # Or yarn install
 
@@ -18,4 +20,3 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
