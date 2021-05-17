@@ -1,22 +1,16 @@
-# This is my growing in JavaScript. My study. Thanks for all who helps me in this hard and long way
+# Project for study and practice in:
 
-> Nuxt.js project
+- JavaScript
+- VueJS
+- NuxtJS
+- Animation/Transition
+- Argon Design System
+- HighlightJS
 
 https://frontendworkbook.herokuapp.com/
 
-## Build Setup
+-----------------------------
 
-```bash
-# install dependencies
-$ npm install # Or yarn install
+**RUN:**
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
-```
+npm run dev
